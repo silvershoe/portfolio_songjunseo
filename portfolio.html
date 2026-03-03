@@ -1,0 +1,2169 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Junseo Song — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Noto+Sans+KR:wght@300;400&family=Noto+Serif+KR:wght@300;600&display=swap" rel="stylesheet">
+<style>
+  @font-face {
+    font-family: 'TitleFont';
+    src: url('./assets/fonts/title.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  :root {
+    --ivory:       #F6E4D9;
+    --near-black:  #1A1A1A;
+    --charcoal:    #2C2C2C;
+    --body:        #4A4A4A;
+    --sub:         #888888;
+    --footer-text: #BBBBBB;
+    --divider:     #D4C4BA;
+    --red:         #EB3300;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: auto; }
+  body {
+    background: var(--ivory);
+    color: var(--near-black);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ══════════════════════════════════════════
+     PAGE 1 — HERO  (190vh)
+  ══════════════════════════════════════════ */
+  #page1 { height: 190vh; position: relative; }
+
+  .hero-sticky {
+    position: sticky; top: 0; height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: flex-end; justify-content: flex-end;
+    overflow: hidden;
+    padding: 0 72px 33vh 0;
+  }
+  .hero-logo-wrap {
+    display: flex; flex-direction: column; align-items: flex-end;
+    will-change: opacity, filter; gap: 6px;
+  }
+  .furi-ruby {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: clamp(11px, 1.2vw, 16px); font-weight: 300;
+    color: var(--red); letter-spacing: 0.22em; line-height: 1; text-align: right;
+  }
+  .hero-name {
+    font-family: 'TitleFont', 'Cormorant Garamond', serif;
+    font-weight: 700; font-size: clamp(44px, 6.2vw, 78px);
+    letter-spacing: 0.10em; color: var(--near-black);
+    line-height: 1; text-align: right; will-change: color;
+  }
+  /* Page 1 scroll hint — original style */
+  .scroll-hint {
+    position: absolute; bottom: 52px; left: 50%;
+    transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+  }
+  .scroll-hint span { font-size: 9px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--footer-text); }
+  .scroll-line { width: 1px; height: 36px; background: var(--divider); position: relative; overflow: hidden; }
+  .scroll-line::after {
+    content: ''; position: absolute; top: -100%; left: 0;
+    width: 100%; height: 100%; background: var(--red);
+    animation: scrollDrop 1.8s ease-in-out infinite;
+  }
+  @keyframes scrollDrop { 0%{top:-100%} 100%{top:100%} }
+
+  /* ══════════════════════════════════════════
+     PAGE 2 — RESUME & SKILLS  (300vh)
+  ══════════════════════════════════════════ */
+  #page2 { height: 300vh; position: relative; }
+
+  .dual-sticky {
+    position: sticky; top: 0; height: 100vh;
+    display: grid; grid-template-columns: 3.5fr 6.5fr; overflow: hidden;
+  }
+  .col-left, .col-right {
+    display: flex; flex-direction: column; justify-content: space-evenly;
+    will-change: transform, opacity;
+  }
+  .col-left  { border-right: 0.5px solid var(--divider); padding: 60px 44px 60px 64px; }
+  .col-right { padding: 60px 72px 60px 60px; }
+  .col-label { font-family: 'Noto Sans KR', sans-serif; font-size: 9px; letter-spacing: 0.42em; text-transform: uppercase; color: var(--red); margin-bottom: 10px; font-weight: 300; }
+  .col-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 300; color: var(--near-black); letter-spacing: 0.05em; line-height: 1.45; margin-bottom: 24px; }
+  .info-block { display: flex; flex-direction: column; gap: 5px; }
+  .info-label { font-family: 'Noto Sans KR', sans-serif; font-size: 11px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--red); font-weight: 400; }
+  .info-value { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 300; color: var(--near-black); letter-spacing: 0.05em; line-height: 1.5; }
+  .info-detail { font-family: 'Noto Sans KR', sans-serif; font-size: 11.5px; color: var(--sub); line-height: 1.9; font-weight: 300; letter-spacing: 0.01em; }
+  .exp-item { display: flex; flex-direction: column; gap: 5px; padding-bottom: 22px; border-bottom: 0.5px solid var(--divider); }
+  .exp-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .exp-year { font-family: 'Noto Sans KR', sans-serif; font-size: 8.5px; letter-spacing: 0.22em; color: var(--red); text-transform: uppercase; font-weight: 300; }
+  .exp-role { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--near-black); letter-spacing: 0.02em; line-height: 1.2; }
+  .exp-company { font-family: 'Noto Sans KR', sans-serif; font-size: 10.5px; font-weight: 300; color: var(--sub); letter-spacing: 0.05em; }
+  .exp-desc { font-family: 'Noto Sans KR', sans-serif; font-size: 11.5px; color: var(--body); line-height: 1.95; font-weight: 300; }
+  .exp-highlight { font-family: 'Noto Sans KR', sans-serif; font-size: 11px; color: var(--red); letter-spacing: 0.03em; margin-top: 1px; font-weight: 400; }
+  .cat-label { color: var(--red); font-size: 8.5px; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 5px; margin-top: 2px; }
+
+  /* ══════════════════════════════════════════
+     PAGE 3 (HTML: page4) — PANORAMIC SLIDE
+     Motion sequence (9s total, one-action):
+       Intro  : enter ramp (PANO_ENTER_SCALE × vh)
+       Content: horizontal strip scroll (6s proportion)
+       Outro  : JS Math.sin bounce (120px) + slide-up (3s proportion)
+     Height computed dynamically in computePanoramaHeight().
+  ══════════════════════════════════════════ */
+  #page4 { position: relative; min-height: 300vh; }
+
+  .panorama-sticky {
+    position: sticky; top: 0; height: 100vh;
+    overflow: hidden; will-change: transform;
+    transform: translate3d(0, 100vh, 0);
+  }
+  /* Bottom-left typography — same pattern as seq-text */
+  .panorama-text {
+    position: absolute; z-index: 20; left: 72px; bottom: 64px;
+    pointer-events: none;
+  }
+  .panorama-eyebrow {
+    font-family: 'Noto Sans KR', sans-serif; font-weight: 300;
+    font-size: 9px; letter-spacing: 0.44em; text-transform: uppercase;
+    color: var(--red); margin-bottom: 16px;
+  }
+  .panorama-heading {
+    font-family: 'Cormorant Garamond', serif; font-style: normal;
+    font-weight: 300; font-size: clamp(32px, 4.2vw, 60px);
+    line-height: 1.22; letter-spacing: 0.03em;
+    color: var(--charcoal); max-width: 480px;
+    text-shadow: 0 1px 24px rgba(246,228,217,0.55);
+  }
+  .panorama-track { position: absolute; inset: 0; overflow: hidden; }
+  .panorama-strip { display: flex; flex-direction: row; align-items: stretch; height: 100vh; will-change: transform; }
+  .panorama-strip img { display: block; height: 100vh; width: auto; flex-shrink: 0; user-select: none; }
+  .panorama-vignette {
+    position: absolute; inset: 0; z-index: 10; pointer-events: none;
+    background: linear-gradient(to right, rgba(246,228,217,0.38) 0%, transparent 38%);
+  }
+  .panorama-progress { position: absolute; bottom: 0; left: 0; height: 2px; width: 0%; background: var(--red); z-index: 30; }
+
+  /* ══════════════════════════════════════════
+     PAGE 4 (HTML: page5) — CLO VISUAL SHOWCASE
+     Motion sequence (12s total, one-action):
+       Intro  : fade-in ramp (P5_FADE_IN × P5_SCALE × vh)
+       Content: frames 1–64 linear + ease-in leftward slide (9s proportion)
+                Slide begins from frame 1, panels 0→3 swept left
+       Outro  : JS Math.sin bounce (120px) + slide-up (3s proportion)
+                IDENTICAL mechanism to Page 3 outro
+     Height computed in computeSeqHeight().
+     No CSS @keyframes — all transforms via rafSeq loop.
+     Typography: bottom-left text (Title Font heading + red eyebrow)
+  ══════════════════════════════════════════ */
+  #page5 { position: relative; /* height set by JS */ }
+
+  .seq-sticky {
+    position: sticky; top: 0; height: 100vh;
+    overflow: hidden;
+    background: var(--ivory);
+    will-change: transform, opacity;
+  }
+  .seq-train {
+    position: absolute; top: 0; left: 0;
+    display: flex; flex-direction: row; align-items: stretch;
+    height: 100vh;
+    /* width: auto — sized by children (panel0 + garment strip natural widths) */
+    will-change: transform;
+  }
+  .seq-panel {
+    flex: 0 0 100vw; height: 100vh;
+    position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--ivory);
+  }
+  .seq-panel img {
+    display: block; height: 100vh; width: auto;
+    max-width: 100%; object-fit: contain; flex-shrink: 0;
+  }
+  /* Garment image strip — all 3 images in one seamless horizontal row.
+     height=100vh, width=auto (natural aspect ratio, NOT stretched to vw).
+     No gaps: display:flex with no gap/margin on children. */
+  .seq-garment-strip {
+    display: flex; flex-direction: row; align-items: stretch;
+    height: 100vh; flex-shrink: 0;
+    background: var(--ivory);
+  }
+  .seq-garment-strip img {
+    display: block;
+    height: 100vh;
+    width: auto;         /* natural aspect ratio — NOT viewport-fitted */
+    flex-shrink: 0;
+    object-fit: contain;
+    margin: 0; padding: 0; /* zero gap between images */
+  }
+  .seq-progress {
+    position: absolute; bottom: 0; left: 0;
+    height: 2px; width: 0%; background: var(--red); z-index: 30;
+  }
+  .seq-caption {
+    position: absolute; bottom: 24px; left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--sub); white-space: nowrap; z-index: 20;
+    font-family: 'Noto Sans KR', sans-serif; font-weight: 300;
+  }
+  /* Bottom-left typography for Page 4 (CLO showcase)
+     Font style matches 3P panorama-heading / panorama-eyebrow exactly. */
+  .seq-text {
+    position: absolute; z-index: 20; left: 72px; bottom: 64px;
+    pointer-events: none;
+  }
+  .seq-eyebrow {
+    font-family: 'Noto Sans KR', sans-serif; font-weight: 300;
+    font-size: 9px; letter-spacing: 0.44em; text-transform: uppercase;
+    color: var(--red); margin-bottom: 16px;
+  }
+  .seq-heading {
+    /* Identical to .panorama-heading — Cormorant Garamond 300, NOT TitleFont */
+    font-family: 'Cormorant Garamond', serif; font-style: normal;
+    font-weight: 300; font-size: clamp(32px, 4.2vw, 60px);
+    line-height: 1.22; letter-spacing: 0.03em;
+    color: var(--charcoal); max-width: 480px;
+    text-shadow: 0 1px 24px rgba(246,228,217,0.55);
+  }
+  /* Each line rendered as its own block — guarantees 2-line structure */
+  .seq-heading-line {
+    display: block;
+    white-space: nowrap;
+  }
+
+  /* ══════════════════════════════════════════
+     PAGE 5 (HTML: page3) — CAREER TIMELINE  (380vh)
+  ══════════════════════════════════════════ */
+  #page3 { height: 786vh; position: relative; }
+
+  .timeline-sticky {
+    position: sticky; top: 0; height: 100vh;
+    display: flex; flex-direction: column;
+    padding: 0 80px; overflow: hidden;
+  }
+  .timeline-header { padding-top: calc(33vh - 20px); margin-bottom: 0; }
+  .timeline-label { font-family: 'Noto Sans KR', sans-serif; font-weight: 300; font-size: 10px; letter-spacing: 0.38em; text-transform: uppercase; color: var(--red); margin-bottom: 14px; }
+  .timeline-heading { font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 300; color: var(--near-black); letter-spacing: 0.04em; }
+  .timeline-track { position: absolute; bottom: 200px; left: 80px; right: 80px; height: 240px; }
+  .timeline-line { position: absolute; top: 20px; left: 0; height: 1px; background: var(--near-black); width: 0%; transform-origin: left; }
+  .timeline-node { position: absolute; top: 13px; width: 14px; height: 14px; border-radius: 50%; border: 1.5px solid var(--red); background: var(--red); opacity: 0; transform: scale(0) translateY(-50%); will-change: transform, opacity, filter; }
+  .node-ring { position: absolute; top: 50%; left: 50%; width: 14px; height: 14px; border-radius: 50%; border: 1px solid var(--red); transform: translate(-50%, -50%) scale(1); opacity: 0; pointer-events: none; }
+  .node-tick { position: absolute; background: var(--red); pointer-events: none; transform-origin: center; opacity: 0; }
+  .node-tick-h { top: 50%; left: 50%; width: 20px; height: 1px; transform: translate(-50%, -50%); }
+  .node-tick-v { top: 50%; left: 50%; width: 1px; height: 20px; transform: translate(-50%, -50%); }
+  .timeline-content { position: absolute; top: -175px; transform: translateY(16px); opacity: 0; width: 190px; will-change: transform, opacity, filter; }
+  .tl-year  { font-size: 9px; letter-spacing: 0.28em; color: var(--red); margin-bottom: 7px; }
+  .tl-title { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 600; color: var(--near-black); letter-spacing: 0.02em; margin-bottom: 7px; line-height: 1.3; }
+  .tl-sub   { font-family: 'Noto Sans KR', sans-serif; font-weight: 300; font-size: 11px; color: var(--sub); line-height: 1.75; }
+
+  /* ══════════════════════════════════════════
+     GLOBAL SCROLL HINT
+     Appears at every anchor stop after animation settles.
+     Variant: hint-dark (ivory bg), hint-light (image bg, pano anchor).
+     Toggled exclusively by showHint() / hideHint() — never by CSS alone.
+  ══════════════════════════════════════════ */
+  .g-hint {
+    position: fixed; bottom: 52px; left: 50%;
+    transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+    pointer-events: none; z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .g-hint.visible { opacity: 1; }
+  .g-hint span {
+    font-family: 'Noto Sans KR', sans-serif; font-size: 9px;
+    letter-spacing: 0.35em; text-transform: uppercase; font-weight: 300;
+    transition: color 0.4s ease;
+  }
+  .g-hint-line { width: 1px; height: 36px; position: relative; overflow: hidden; transition: background 0.4s ease; }
+  .g-hint-line::after {
+    content: ''; position: absolute; top: -100%; left: 0;
+    width: 100%; height: 100%;
+    animation: scrollDrop 1.8s ease-in-out infinite;
+    transition: background 0.4s ease;
+  }
+  /* Ivory / near-white text-bg pages (stop 0, 1, 3) */
+  .g-hint.hint-dark span              { color: var(--footer-text); }    /* #BBBBBB */
+  .g-hint.hint-dark .g-hint-line      { background: var(--divider); }
+  .g-hint.hint-dark .g-hint-line::after { background: var(--red); }
+  /* Bright image-bg pages — panorama (stop 2): high-contrast dark ink */
+  .g-hint.hint-bright span            { color: var(--near-black); }     /* #1A1A1A */
+  .g-hint.hint-bright .g-hint-line    { background: var(--charcoal); }  /* #2C2C2C */
+  .g-hint.hint-bright .g-hint-line::after { background: var(--red); }
+  /* Genuinely dark-bg pages (reserved, not currently active) */
+  .g-hint.hint-light span             { color: rgba(246,228,217,0.75); }
+  .g-hint.hint-light .g-hint-line     { background: rgba(246,228,217,0.28); }
+  .g-hint.hint-light .g-hint-line::after { background: rgba(246,228,217,0.9); }
+
+  /* ══════════════════════════════════════════
+     PAGE 6 — INTERACTIVE SHOWCASE
+  ══════════════════════════════════════════ */
+  #page6 {
+    position: relative;
+    height: 200vh;
+    background: var(--ivory);
+  }
+  .showcase-sticky {
+    position: sticky; top: 0; height: 100vh;
+    display: flex; overflow: hidden;
+    will-change: opacity;
+    opacity: 0;  /* 수정4: fade 방식, JS가 opacity 제어 */
+  }
+  /* Left Menu (35%) — v13 theme */
+  .showcase-left {
+    flex: 0 0 35%;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 60px 44px 60px 64px;
+    border-right: 0.5px solid var(--divider);
+    position: relative; z-index: 10;
+    background: var(--ivory);
+  }
+  .sc-label {
+    font-family: 'Noto Sans KR', sans-serif; font-size: 9px;
+    letter-spacing: 0.42em; text-transform: uppercase;
+    color: var(--red); margin-bottom: 40px; font-weight: 300;
+  }
+  .sc-nav { display: flex; flex-direction: column; gap: 28px; }
+  .sc-item {
+    font-family: 'Cormorant Garamond', serif; font-size: clamp(22px, 3vw, 36px);
+    font-weight: 300; color: var(--near-black); letter-spacing: 0.04em;
+    cursor: pointer; transition: color 0.3s ease; line-height: 1.2;
+    will-change: color;
+  }
+  .sc-item:hover, .sc-item.is-active { color: var(--red); }
+
+  /* Right Viewport (65%) */
+  .showcase-viewport {
+    flex: 0 0 65%;
+    position: relative; overflow: hidden;
+    background: var(--ivory);
+  }
+  /* Idle placeholder */
+  .showcase-placeholder {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end;
+    padding: 48px 56px; pointer-events: none;
+    transition: opacity 0.5s ease;
+  }
+  .showcase-placeholder.hidden { opacity: 0; }
+  .showcase-placeholder-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(38px, 5vw, 72px); font-weight: 300;
+    color: var(--divider); line-height: 1.1; letter-spacing: 0.04em; text-align: right;
+  }
+  /* Content panels — slide in from right */
+  .showcase-panel {
+    position: absolute; inset: 0; overflow: hidden;
+    transform: translateX(100%); will-change: transform;
+  }
+  /* Group A — Marquee */
+  .marquee-track {
+    position: absolute; inset: 0;
+    display: flex; align-items: center;
+    overflow: hidden;
+  }
+  .marquee-strip {
+    display: flex; flex-direction: row; align-items: center;
+    gap: 28px; will-change: transform; flex-shrink: 0;
+  }
+  .marquee-strip img {
+    height: 68vh; width: auto; display: block; flex-shrink: 0;
+    object-fit: cover; user-select: none; pointer-events: none;
+  }
+  @keyframes marqueeScroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  /* Group B — Floating samples */
+  .samples-track {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: row; align-items: center;
+    gap: 0; padding: 0 40px; overflow: hidden;
+  }
+  .sample-item { flex-shrink: 0; will-change: transform; }
+  .sample-item img {
+    height: 50vh; width: auto; display: block; object-fit: contain;
+    user-select: none; pointer-events: none;
+    filter: drop-shadow(0 8px 32px rgba(26,26,26,0.10));
+  }
+  /* Bottom labels */
+  .showcase-cat-label {
+    position: absolute; bottom: 28px; left: 28px; z-index: 20;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 9px; letter-spacing: 0.42em; text-transform: uppercase;
+    color: var(--red); font-weight: 300; pointer-events: none;
+    opacity: 0; transition: opacity 0.4s ease;
+  }
+  .showcase-cat-label.visible { opacity: 1; }
+  .showcase-progress {
+    position: absolute; bottom: 0; left: 0;
+    height: 2px; width: 0%; background: var(--red); z-index: 30;
+    transition: width 1.2s ease-out;
+  }
+
+  /* ══════════════════════════════════════════
+     PAGE 7 — CONTACT  (v15 스타일, 2/3 지점)
+  ══════════════════════════════════════════ */
+  #page7 {
+    position: relative;
+    height: 100vh;
+    background: var(--ivory);
+    overflow: hidden;
+  }
+  /* Fade-in + slide-up animation for contact block */
+  /* 수정4+5: Contact — fade-only (scroll-up 제거), 3/5 지점 배치 */
+  .contact-wrap {
+    position: absolute;
+    top: 60%;  /* 수정5: 페이지 높이 3/5 = 60% */
+    transform: translateY(-50%);  /* 블록 중앙이 60% 라인에 정렬 */
+    right: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0;
+    opacity: 0;
+    transition: opacity 0.9s cubic-bezier(0.25, 0, 0, 1);
+  }
+  .contact-wrap.visible {
+    opacity: 1;
+  }
+  .contact-eyebrow {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.44em;
+    text-transform: uppercase;
+    color: var(--red);
+    font-weight: 300;
+    margin-bottom: 18px;
+    text-align: right;
+  }
+  .contact-title {
+    font-family: 'TitleFont', 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: clamp(20px, 2.2vw, 32px);
+    letter-spacing: 0.06em;
+    color: var(--near-black);
+    line-height: 1;
+    text-align: right;
+    margin-bottom: 40px;
+  }
+  .contact-divider {
+    width: 1px;
+    height: 44px;
+    background: var(--divider);
+    margin-bottom: 32px;
+    align-self: flex-end;
+  }
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 22px;
+  }
+  .contact-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+  }
+  .contact-item-label {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 8px;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: var(--red);
+    font-weight: 300;
+  }
+  .contact-item-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(14px, 1.5vw, 20px);
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    color: var(--near-black);
+    text-align: right;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  .contact-item-value:hover { color: var(--red); }
+  #page7::after {
+    content: '';
+    position: absolute;
+    right: 0; top: 60%;  /* 수정5: 3/5 지점 */
+    width: 1px; height: 40vh;
+    background: var(--divider);
+    pointer-events: none;
+  }
+
+  /* ══════════════════════════════════════════
+     NAVIGATION REMOTE CONTROL
+     Fixed right sidebar — vertical rotated labels
+  ══════════════════════════════════════════ */
+  #navRemote {
+    position: fixed; right: 0; top: 50%;
+    transform: translateY(-50%);
+    display: flex; flex-direction: column; align-items: center;
+    gap: 0; z-index: 8888;
+    padding: 12px 0;
+    pointer-events: auto;
+  }
+  .nav-btn {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 11px; font-weight: 300;
+    letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--footer-text);
+    padding: 16px 12px;
+    cursor: pointer;
+    border: none; background: transparent;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+    line-height: 1;
+  }
+  .nav-btn:hover { color: var(--red); }
+  .nav-btn.active { color: var(--red); }
+
+  /* Full-page fade overlay for remote navigation */
+  #navFadeOverlay {
+    position: fixed; inset: 0; z-index: 7777;
+    background: var(--ivory);
+    opacity: 0; pointer-events: none;
+    transition: none;
+  }
+  #navFadeOverlay.fading { pointer-events: auto; }
+</style>
+</head>
+<body>
+
+<!-- ═══ PAGE 1: HERO ═══ -->
+<section id="page1">
+  <div class="hero-sticky">
+    <div class="hero-logo-wrap" id="heroLogo">
+      <div class="furi-ruby">송 준서</div>
+      <div class="hero-name">Junseo Song</div>
+    </div>
+    <div class="scroll-hint" id="scrollHint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GLOBAL SCROLL HINT (fixed overlay — shared across all anchor stops) ═══ -->
+<div class="g-hint hint-dark" id="gHint" aria-hidden="true">
+  <span id="gHintLabel">Scroll</span>
+  <div class="g-hint-line"></div>
+</div>
+
+<!-- ═══ NAVIGATION REMOTE CONTROL ═══ -->
+<nav id="navRemote" aria-label="Page navigation">
+  <button class="nav-btn active" data-stop="0">Title</button>
+  <button class="nav-btn" data-stop="1">Career</button>
+  <button class="nav-btn" data-stop="2">Highlight</button>
+  <button class="nav-btn" data-stop="3">Design</button>
+  <button class="nav-btn" data-stop="4">3D Solution</button>
+  <button class="nav-btn" data-stop="5">Showcase</button>
+  <button class="nav-btn" data-stop="6">Contact</button>
+</nav>
+
+<!-- ═══ FADE OVERLAY for remote navigation ═══ -->
+<div id="navFadeOverlay"></div>
+
+<!-- ═══ PAGE 2: RESUME & SKILLS ═══ -->
+<section id="page2">
+  <div class="dual-sticky">
+    <div class="col-left" id="colLeft">
+      <div>
+        <div class="col-label">Education &amp; Skill</div>
+        <div class="col-title">복식의 정통성과<br>디지털 기술의 결합</div>
+      </div>
+      <div class="info-block">
+        <div class="info-label">언어 능력</div>
+        <div class="info-value">한국어 · 日本語 · English</div>
+      </div>
+      <div class="info-block">
+        <div class="info-label">학력</div>
+        <div class="info-detail">
+          <span style="display:block;font-size:9px;color:var(--red);letter-spacing:0.01em;line-height:1.5;">文化学園大学</span>
+          <span style="font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:300;color:var(--near-black);letter-spacing:0.04em;line-height:1.5;display:block;">Bunka Gakuen University</span>
+          <span style="display:block;margin-top:6px;">Bachelor of Fashion Technology</span>
+          <span style="display:block;margin-top:8px;line-height:1.6;">
+            <span style="display:block;font-size:9px;color:var(--red);letter-spacing:0.01em;line-height:1.5;">Arduinoを用いたブルートゥース入力装置の衣類への実装</span>
+            <span style="display:block;font-size:11px;color:var(--sub);">아두이노를 사용한 의류형 블루투스 입력장치의 구현 논문 작성</span>
+          </span>
+        </div>
+      </div>
+      <div class="info-block">
+        <div class="info-label">기술 역량</div>
+        <div class="info-detail" style="line-height:2.1;">
+          <span style="color:var(--red);font-size:9px;letter-spacing:0.22em;text-transform:uppercase;">Graphic</span><br>
+          Illustrator &nbsp;·&nbsp; Photoshop<br>
+          <span style="color:var(--red);font-size:9px;letter-spacing:0.22em;text-transform:uppercase;display:block;margin-top:4px;">Fashion</span>
+          CLO &nbsp;·&nbsp; Shima KnitCAD &nbsp;·&nbsp; Wilcom Embroidery<br>
+          <span style="color:var(--red);font-size:9px;letter-spacing:0.22em;text-transform:uppercase;display:block;margin-top:4px;">AI</span>
+          Claude &nbsp;·&nbsp; Midjourney &nbsp;·&nbsp; Firefly &nbsp;·&nbsp; Sora &nbsp;·&nbsp; Grok &nbsp;·&nbsp; Gemini
+        </div>
+      </div>
+    </div>
+
+    <div class="col-right" id="colRight">
+      <div>
+        <div class="col-label">Experience</div>
+        <div class="col-title">$5.3M 수주를 견인한<br>패션&amp;3D 디자이너</div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-year">2024.11 – 2025.11 · Women's Activewear Designer</div>
+        <div class="exp-role">한솔섬유</div>
+        <div class="exp-company">Target · Kmart · Victoria's Secret · Calvin Klein · PXG · Free People · Talbots</div>
+        <div class="cat-label">Garment Development &amp; Market Analysis</div>
+        <div class="exp-desc">실물 및 CLO3D 샘플링 기반 Calvin Klein, Target 등 글로벌 브랜드 대상 총 80만 벌 이상의 수주 달성. 트렌드 분석 보고서 기획 및 작업지시서 작성, 3D 패턴 수정을 통한 효율적인 샘플 제작 공정 확립.</div>
+        <div class="exp-highlight">약 $5,300,000 직접적 이익 기여</div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-year">2023.08 – 2024.11 · Fashion Researcher &amp; Developer</div>
+        <div class="exp-role">풍인무역</div>
+        <div class="exp-company">Alo Yoga · Athleta · Varley · Post Archive Faction · J.EONGL.I · Norse Project · 66North</div>
+        <div class="cat-label">Garment Development &amp; Sourcing</div>
+        <div class="exp-desc">유력 디자이너 브랜드 수주를 통한 기술력 입증 및 주력 사업인 Alo Yoga와의 전략적 파트너십 체결 견인. $1M+ 이상의 수익을 창출한 메가 히트작 'Make Waves' 시리즈 디자인. 해외 네트워크를 활용한 다이렉트 자재 소싱 및 차별화 디자인 경쟁력 확보.</div>
+        <div class="exp-highlight">Alo Yoga 주력 계약 체결 견인</div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-year">2022.09 – 2023.07 · Menswear Designer</div>
+        <div class="exp-role">리비저너리</div>
+        <div class="exp-company">Montsenu · Reposition</div>
+        <div class="cat-label">Garment Development &amp; Directing</div>
+        <div class="exp-desc">시장조사 기반 기획부터 생산, 후가공까지 전 공정 단독 수행. 입체 재단·실물 패턴 작성으로 고난도 디자인 구현. 염색·워싱·니팅 등 다양한 기법 도입.</div>
+        <div class="exp-highlight">Montsenu 브랜드 자카르타 패션 위크 컬렉션 데뷔</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PAGE 3 — CAREER TIMELINE ═══ -->
+<section id="page3">
+  <div class="timeline-sticky">
+    <div class="timeline-header">
+      <div class="timeline-label">Career Highlight · 2022 – 2025</div>
+      <div class="timeline-heading">커리어로 증명한 성과</div>
+    </div>
+    <div class="timeline-track" id="timelineTrack">
+      <div class="timeline-line" id="timelineLine"></div>
+
+      <div class="timeline-node" id="node0" style="left:3%">
+        <span class="node-ring" id="ring0a"></span><span class="node-ring" id="ring0b"></span>
+        <span class="node-tick node-tick-h" id="tickH0"></span><span class="node-tick node-tick-v" id="tickV0"></span>
+        <div class="timeline-content" id="content0" style="left:-10px">
+          <div class="tl-year">2023</div><div class="tl-title">리비저너리</div>
+          <div class="tl-sub">Montsenu 브랜드<br>롯데백화점 팝업 개최<br>Reposition 브랜드 론칭</div>
+        </div>
+      </div>
+      <div class="timeline-node" id="node1" style="left:30%">
+        <span class="node-ring" id="ring1a"></span><span class="node-ring" id="ring1b"></span>
+        <span class="node-tick node-tick-h" id="tickH1"></span><span class="node-tick node-tick-v" id="tickV1"></span>
+        <div class="timeline-content" id="content1" style="left:-10px">
+          <div class="tl-year">2024</div><div class="tl-title">풍인무역</div>
+          <div class="tl-sub">Alo Yoga 계약 체결<br>Make Waves 8만장 수주</div>
+        </div>
+      </div>
+      <div class="timeline-node" id="node2" style="left:57%">
+        <span class="node-ring" id="ring2a"></span><span class="node-ring" id="ring2b"></span>
+        <span class="node-tick node-tick-h" id="tickH2"></span><span class="node-tick node-tick-v" id="tickV2"></span>
+        <div class="timeline-content" id="content2" style="left:-10px">
+          <div class="tl-year">2025</div><div class="tl-title">리비저너리</div>
+          <div class="tl-sub">Montsenu 브랜드의<br>자카르타 컬렉션 데뷔</div>
+        </div>
+      </div>
+      <div class="timeline-node" id="node3" style="left:83%">
+        <span class="node-ring" id="ring3a"></span><span class="node-ring" id="ring3b"></span>
+        <span class="node-tick node-tick-h" id="tickH3"></span><span class="node-tick node-tick-v" id="tickV3"></span>
+        <div class="timeline-content" id="content3" style="left:-10px">
+          <div class="tl-year">2025</div><div class="tl-title">한솔섬유</div>
+          <div class="tl-sub">Target · Kmart · Victoria's Secret<br>등 합계 80만 장 이상 수주</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PAGE 4 — DESIGN PHILOSOPHY — PANORAMIC SLIDE ═══ -->
+<section id="page4">
+  <div class="panorama-sticky" id="panoramaSticky">
+    <div class="panorama-track">
+      <div class="panorama-strip" id="panoramaStrip">
+        <img src="./assets/images/productslide/1.jpg"  alt="">
+        <img src="./assets/images/productslide/2.jpg"  alt="">
+        <img src="./assets/images/productslide/3.jpg"  alt="">
+        <img src="./assets/images/productslide/4.jpg"  alt="">
+        <img src="./assets/images/productslide/5.jpg"  alt="">
+        <img src="./assets/images/productslide/6.jpg"  alt="">
+        <img src="./assets/images/productslide/7.jpg"  alt="">
+        <img src="./assets/images/productslide/8.jpg"  alt="">
+        <img src="./assets/images/productslide/9.jpg"  alt="">
+        <img src="./assets/images/productslide/10.jpg" alt="">
+      </div>
+    </div>
+    <div class="panorama-vignette"></div>
+    <div class="panorama-text">
+      <div class="panorama-eyebrow">Curating Vision for Worldwide Brands</div>
+      <h2 class="panorama-heading">글로벌 브랜드가<br>선택한 디자인</h2>
+    </div>
+    <div class="panorama-progress" id="panoramaProgress"></div>
+  </div>
+</section>
+
+<!-- ═══ PAGE 5 — CLO VISUAL SHOWCASE ═══ -->
+<section id="page5">
+  <div class="seq-sticky" id="seqSticky">
+    <div class="seq-train" id="seqTrain">
+      <!-- JS buildSeqTrain() injects panel0 (CLO frames) + panels 1–3 (garment photos) -->
+    </div>
+    <!-- Bottom-left typography: Title Font heading + red furigana-style eyebrow -->
+    <div class="seq-text">
+      <div class="seq-eyebrow">Engineering Precision. Tailoring Craftsmanship</div>
+      <h2 class="seq-heading">
+        <span class="seq-heading-line">봉제 공학에 기반한</span>
+        <span class="seq-heading-line">정확한 3D 솔루션</span>
+      </h2>
+    </div>
+    <div class="seq-progress" id="seqProgressBar"></div>
+    <div class="seq-caption" id="seqCaption">CLO Image · 3D Animation</div>
+  </div>
+</section>
+
+<!-- ═══ PAGE 6 — INTERACTIVE SHOWCASE ═══ -->
+<section id="page6">
+  <div class="showcase-sticky" id="showcaseSticky">
+    <!-- Left: v13 theme navigation -->
+    <div class="showcase-left" id="showcaseLeft">
+      <div class="sc-label">Interactive Showcase</div>
+      <nav class="sc-nav" id="scNav">
+        <div class="sc-item" data-key="mi">Market Intelligence</div>
+        <div class="sc-item" data-key="clo">CLO</div>
+        <div class="sc-item" data-key="tp">Tech Pack</div>
+        <div class="sc-item" data-key="sample">Physical Sample</div>
+      </nav>
+    </div>
+    <!-- Right: Dynamic Viewport (v19 engine) -->
+    <div class="showcase-viewport" id="showcaseViewport">
+      <!-- Idle placeholder -->
+      <div class="showcase-placeholder" id="showcasePlaceholder">
+        <div class="showcase-placeholder-text">Hover to<br>explore</div>
+      </div>
+      <!-- Panels injected by JS -->
+      <div class="showcase-cat-label" id="showcaseCatLabel"></div>
+      <div class="showcase-progress" id="showcaseProgress"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PAGE 7 — CONTACT ═══ -->
+<section id="page7">
+  <div class="contact-wrap" id="contactWrap">
+    <div class="contact-eyebrow">Get in Touch</div>
+    <div class="contact-title">Contact</div>
+    <div class="contact-divider"></div>
+    <div class="contact-info">
+      <div class="contact-item">
+        <span class="contact-item-label">Phone</span>
+        <a class="contact-item-value" href="tel:+821094441465">+82 10-9444-1465</a>
+      </div>
+      <div class="contact-item">
+        <span class="contact-item-label">Email</span>
+        <a class="contact-item-value" href="mailto:songjunseo@hotmail.com">songjunseo@hotmail.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+'use strict';
+
+/* ═══════════════════════════════════════════════════════════════
+   ① EASING UTILITIES
+═══════════════════════════════════════════════════════════════ */
+const clamp    = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+const mapRange = (v, a, b, c, d) => c + (d - c) * clamp((v - a) / (b - a), 0, 1);
+const lerp     = (a, b, t) => a + (b - a) * t;
+
+function easeInOutCubic(t)  { return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2, 3)/2; }
+function easeInOutQuart(t)  { return t < 0.5 ? 8*t*t*t*t : 1 - Math.pow(-2*t+2, 4)/2; }
+function easeOutExpo(t)     { return t >= 1 ? 1 : 1 - Math.pow(2, -10*t); }
+function easeInCubic(t)     { return t * t * t; }
+function easeOutCubic(t)    { return 1 - Math.pow(1 - t, 3); }
+/* ★ Design-page intro easing: gradual acceleration, speed ratio = exactly 2×
+   f(t) = (2/3)t + (1/3)t²  →  f'(0)=2/3, f'(1)=4/3, ratio=2.0  ✓ */
+function easeInConstrained(t) { return (2/3)*t + (1/3)*t*t; }
+const easeLinear = t => t;  // Trans[1] Highlight 등속용
+
+/* 3P strip and 4P slide both use easeInCubic (t^3) for gradual acceleration
+   from rest. Frames (ck_1~64) remain on a separate linear clock — untouched. */
+
+/* ═══════════════════════════════════════════════════════════════
+   PER-PAGE TEMPORAL THRESHOLDS  (v15 timing)
+   ─────────────────────────────────────────────────────────────
+   현재 파일 stop 순서 (v13 HTML 순서 기준):
+     stop[0] P1 Hero  → stop[1] P2 Career      Trans[0] 2400ms easeInOutQuart
+     stop[1] P2       → stop[2] P3 Timeline    Trans[1] 3000ms easeInOutQuart
+     stop[2] P3 Timeline → stop[3] P4 Pano     Trans[2] 3000ms easeInOutQuart
+     stop[3] P4 Pano  → stop[4] P5 CLO         Trans[3] 8500ms easeInCubic
+     stop[4] P5 CLO   → stop[5] P6 Showcase    Trans[4] 14000ms easeInCubic
+     stop[5] P6       → stop[6] P7 Contact     Trans[5] 2400ms easeInOutQuart
+
+   v15 대응 (페이지 순서가 다르므로 컨텐츠 기준 매핑):
+     v15 Trans[0] P1→P2        2400ms  → 현재 Trans[0] 동일
+     v15 Trans[1] P2→Pano      3000ms  → 현재 Trans[1] P2→Timeline, Trans[2] Timeline→Pano 동일 적용
+     v15 Trans[2] Pano→CLO     8500ms  → 현재 Trans[3] 동일
+     v15 Trans[3] CLO→Showcase 14000ms → 현재 Trans[4] 동일
+     v15 Trans[5] →Contact     2400ms  → 현재 Trans[5] 동일
+
+   Trans[3] = 8500 ms  (stop[3] Pano → stop[4] CLO)  ← v15 Trans[2]
+     0.0 → 6.0 s  Pano content (easeInCubic strip)
+     6.0 → 6.1 s  dead zone
+     6.1 → 7.9 s  Pano outro   bounce 0.6 s + exit 1.2 s
+     7.9 → 8.5 s  CLO intro    seqSticky fades in (0.6 s)
+
+   Trans[4] = 14000 ms  (stop[4] CLO → stop[5] Showcase)  ← v15 Trans[3]
+     0.0 →  9.0 s  CLO content frames (linear) + slide (easeInCubic)
+     9.0 →  9.2 s  dead zone
+     9.2 → 11.0 s  CLO outro   bounce 0.6 s + exit 1.2 s
+    11.0 → 14.0 s  Showcase intro spatial scroll (3 s)
+
+   Outro sub-fractions (shared): bounce 0.6/(0.6+1.2) = 1/3
+═══════════════════════════════════════════════════════════════ */
+// Trans[2] pano intro gate: pano enters immediately
+const T1_PANO_START  = 0.0;          // used for Trans[2] (timeline→pano)
+
+const T3_CONTENT_END = 6.0 / 8.5;   // 0.7059 — pano strip done
+const T3_DEAD_END    = 6.1 / 8.5;   // 0.7176 — dead zone end
+const T3_OUTRO_END   = 7.9 / 8.5;   // 0.9294 — pano exit done; CLO intro begins
+
+// 수정3: Trans[4]=8000ms, showcase 공백(3s) 완전 제거
+// 구성: 6s content + 0.2s dead + 1.8s outro = 8s (showcase는 stop[5]에 즉시 도달)
+const T4_CONTENT_END = 6.0 / 8.0;   // 0.7500 — CLO frames+slide done
+const T4_DEAD_END    = 6.2 / 8.0;   // 0.7750 — dead zone end
+const T4_OUTRO_END   = 8.0 / 8.0;   // 1.0000 — CLO exit done (outro가 전체 끝)
+const T4_FRAME_END   = 2.0 / 6.0;   // 0.3333 — frames done at 2s of 6s content
+
+const OUTRO_BOUNCE_FRAC = 0.6 / 1.8; // 0.3333 — bounce 0.6 s / total outro 1.8 s
+const BOUNCE_PX         = 60;         // px — bounce amplitude
+
+window.currentProgress = 0;
+window.currentTransIdx = -1;
+window.navEngineActive = false;
+
+function lerpColor(h1, h2, t) {
+  const p  = s => parseInt(s, 16);
+  const r1 = p(h1.slice(1,3)), g1 = p(h1.slice(3,5)), b1 = p(h1.slice(5,7));
+  const r2 = p(h2.slice(1,3)), g2 = p(h2.slice(3,5)), b2 = p(h2.slice(5,7));
+  return `rgb(${Math.round(r1+(r2-r1)*t)},${Math.round(g1+(g2-g1)*t)},${Math.round(b1+(b2-b1)*t)})`;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ② CONFIG — SINGLE SOURCE OF TRUTH
+   ─────────────────────────────────────────────────────────────
+   Navigation stops (5 total → 4 transitions):
+     stop[0] = 0                              (Page 1 start)
+     stop[1] = P2 columns entered             (2.4 s transition)
+     stop[2] = P4 panorama intro complete     (4.5 s transition) ← ANCHOR: hint-light
+     stop[3] = P5 seq intro complete          (9.0 s, ease-in)  ← ANCHOR: hint-dark
+     stop[4] = P3 timeline start              (12.0 s, ease-in)
+   ─────────────────────────────────────────────────────────────
+   Page 3 (panorama) — 9s one-action from stop[2]:
+     Content scroll (6s proportion): horizontal strip, easeInCubic on scroll pos
+     Outro (3s proportion): JS Math.sin bounce 120px + decelerated slide-up
+     Ratio determined by PANO_CONTENT_FRAC: content gets 6/9 of the total scroll range
+
+   Page 4 (CLO showcase) — 12s one-action from stop[3]:
+     Content (9s proportion): frames 1–64 linear + ease-in leftward slide
+     Outro (3s proportion): JS Math.sin bounce 120px + decelerated slide-up
+     IDENTICAL bounce/slide-up formula as panorama outro
+     Ratio determined by SEQ_CONTENT_FRAC: content gets 9/12 of total scroll range
+
+   Easing for transitions[2] and [3]: easeInCubic (gradual acceleration)
+   Easing for transitions[0] and [1]: easeInOutQuart (natural feel for short jumps)
+═══════════════════════════════════════════════════════════════ */
+const CONFIG = {
+
+  // ── Page 2: Resume columns ─────────────────────────────────
+  P2_ENTER : 0.65,
+  P2_LOCK  : 0.60,
+  P2_EXIT  : 0.65,
+
+  // ── Page 4 (panorama) ──────────────────────────────────────
+  PANO_ENTER_SCALE  : 3.75,   // × vh — intro ramp length (v15 timing)
+  PANO_STRIP_SCALE  : 5.0,    // × maxScrollX — horizontal content scroll amplifier
+  PANO_EXIT_SCALE   : 7.5,    // × vh — outro scroll range (bounce + slide-up)
+  PANO_LERP         : 0.11,   // RAF lerp smoothing
+  PANO_EXIT_POW     : 2.2,    // exponent for decelerated slide-up
+
+  // ── Unified Outro Bounce ───────────────────────────────────
+  BOUNCE_AMP        : 60,
+  BOUNCE_RANGE      : 0.055,
+
+  // ── Page 5 (CLO showcase) ──────────────────────────────────
+  TOTAL_FRAMES      : 64,
+  P5_SCALE          : 2.5,
+  P5_FADE_IN        : 0.50,
+  P5_CONTENT        : 0.50,
+  P5_EXIT           : 0.00,   // 수정3: scroll 공백 구간 제거
+  P5_FADE_OUT       : 0.50,
+  P5_SLIDE_VW       : 3,
+
+  GARMENT_PANELS: [
+    { src: './assets/images/ckframe/ck left (1).jpg', label: 'Garment 1' },
+    { src: './assets/images/ckframe/ck left (2).jpg', label: 'Garment 2' },
+    { src: './assets/images/ckframe/ck left (3).jpg', label: 'Garment 3' },
+  ],
+
+  // ── Page 3 (career timeline) ───────────────────────────────
+  P3_FADE_START     : 0.888,
+  P3_FADE_END       : 0.99,
+
+  // ── Navigation — 6 transitions (7 stops) ──────────────────
+  // stop[0] = 0                     (P1 Hero)
+  // stop[1] = P2 career anchor      Trans[0] 2400ms  easeInOutQuart  ← v15[0]
+  // stop[2] = P3 timeline anchor    Trans[1] 3000ms  easeInOutQuart  ← v15[1] 참고
+  // stop[3] = P4 pano anchor        Trans[2] 3000ms  easeInOutQuart  ← v15[1] 참고
+  // stop[4] = P5 CLO anchor         Trans[3] 8500ms  easeInCubic     ← v15[2]
+  // stop[5] = P6 showcase anchor    Trans[4] 14000ms easeInCubic     ← v15[3]
+  // stop[6] = P7 contact            Trans[5] 2400ms  easeInOutQuart  ← v15[5]
+  // 수정1: Trans[1]=3000ms 등속 | 수정3: Trans[4]=8000ms 공백제거 | 수정6: BACK=FWD/3
+  SEQ_DUR      : [2400, 3000, 3000, 8500, 8000, 2400],
+  SEQ_DUR_BACK : [800,  1000, 1000, 2833, 2667, 800],
+  USE_EASEIN_FROM : 3,   // Trans[3] pano→CLO 부터 easeInCubic (v15 USE_EASEIN_FROM=2 기준, 인덱스 보정)
+
+  // ── Input debounce ─────────────────────────────────────────
+  WHEEL_DEBOUNCE    : 20,
+  WHEEL_THRESH      : 8,
+};
+
+/* ═══════════════════════════════════════════════════════════════
+   ③ DOM CACHE — all elements fetched once at init
+═══════════════════════════════════════════════════════════════ */
+const EL = {
+  page1 : document.getElementById('page1'),
+  page2 : document.getElementById('page2'),
+  page3 : document.getElementById('page3'),  // Timeline
+  page4 : document.getElementById('page4'),  // Panorama
+  page5 : document.getElementById('page5'),  // CLO showcase
+  page6 : document.getElementById('page6'),  // Interactive showcase
+  page7 : document.getElementById('page7'),  // Contact
+
+  heroLogo   : document.getElementById('heroLogo'),
+  heroName   : document.querySelector('.hero-name'),
+  scrollHint : document.getElementById('scrollHint'),
+
+  colLeft  : document.getElementById('colLeft'),
+  colRight : document.getElementById('colRight'),
+
+  panoramaSticky   : document.getElementById('panoramaSticky'),
+  panoramaStrip    : document.getElementById('panoramaStrip'),
+  panoramaProgress : document.getElementById('panoramaProgress'),
+
+  seqSticky      : document.getElementById('seqSticky'),
+  seqTrain       : document.getElementById('seqTrain'),
+  seqProgressBar : document.getElementById('seqProgressBar'),
+  seqCaption     : document.getElementById('seqCaption'),
+  ckFrame        : null,         // assigned by buildSeqTrain()
+  garmentStrip   : null,         // assigned by buildSeqTrain()
+
+  timelineLine : document.getElementById('timelineLine'),
+  nodes    : [0,1,2,3].map(i => document.getElementById('node'+i)),
+  contents : [0,1,2,3].map(i => document.getElementById('content'+i)),
+  ringsA   : [0,1,2,3].map(i => document.getElementById('ring'+i+'a')),
+  ringsB   : [0,1,2,3].map(i => document.getElementById('ring'+i+'b')),
+  ticksH   : [0,1,2,3].map(i => document.getElementById('tickH'+i)),
+  ticksV   : [0,1,2,3].map(i => document.getElementById('tickV'+i)),
+
+  showcaseSticky : document.getElementById('showcaseSticky'),
+  showcaseViewport : document.getElementById('showcaseViewport'),
+  scNav          : document.getElementById('scNav'),
+
+  gHint      : document.getElementById('gHint'),
+  gHintLabel : document.getElementById('gHintLabel'),
+
+  navRemote      : document.getElementById('navRemote'),
+  navFadeOverlay : document.getElementById('navFadeOverlay'),
+};
+
+/* ═══════════════════════════════════════════════════════════════
+   ④ SEQ-TRAIN BUILDER
+      Panel 0: CLO frame (img#ckFrame, src swapped by setFrame)
+      Garment strip: single .seq-garment-strip div containing all 3 images
+        - height: 100vh, width: auto (natural aspect ratio, no viewport-fit)
+        - no gap between images (seamless horizontal strip)
+        - total width varies by natural image sizes
+═══════════════════════════════════════════════════════════════ */
+function buildSeqTrain() {
+  const train = EL.seqTrain;
+  train.innerHTML = '';
+
+  // Panel 0: CLO frame (100vw, centered)
+  const panel0 = document.createElement('div');
+  panel0.className = 'seq-panel';
+  panel0.id = 'seqPanel0';
+  const ckImg = document.createElement('img');
+  ckImg.id  = 'ckFrame';
+  ckImg.src = './assets/images/ckframe/ck_1.png';
+  ckImg.alt = 'CLO 3D Frame';
+  panel0.appendChild(ckImg);
+  train.appendChild(panel0);
+  EL.ckFrame = ckImg;
+
+  // Garment strip: one seamless flex container with natural-width images
+  const strip = document.createElement('div');
+  strip.className = 'seq-garment-strip';
+  strip.id = 'seqGarmentStrip';
+  CONFIG.GARMENT_PANELS.forEach((info) => {
+    const img = document.createElement('img');
+    img.src = info.src;
+    img.alt = info.label;
+    // No inline overrides — CSS rules in .seq-garment-strip img handle layout
+    strip.appendChild(img);
+  });
+  train.appendChild(strip);
+  EL.garmentStrip = strip;
+}
+buildSeqTrain();
+
+/* ═══════════════════════════════════════════════════════════════
+   ⑤ SECTION HEIGHT COMPUTATION
+      computeSeqHeight(): Sets page5 pixel height from CONFIG phases.
+      computePanoramaHeight(): Sets page4 height from image strip width.
+      Both called on init and resize.
+═══════════════════════════════════════════════════════════════ */
+function computeSeqHeight() {
+  const vh    = window.innerHeight;
+  const total =
+    vh * CONFIG.P5_FADE_IN  * CONFIG.P5_SCALE +
+    vh * CONFIG.P5_CONTENT  * CONFIG.P5_SCALE +
+    vh * CONFIG.P5_EXIT                        +
+    vh * CONFIG.P5_FADE_OUT * CONFIG.P5_SCALE  +
+    vh;   // 1vh guard buffer
+  EL.page5.style.height = total + 'px';
+}
+computeSeqHeight();
+
+/* ═══════════════════════════════════════════════════════════════
+   GARMENT SLIDE DISTANCE — dynamic, based on natural image sizes.
+   garmentSlideMaxPx = total natural width of all garment images at 100vh.
+   At slideX=-garmentSlideMaxPx the viewport reveals the full strip.
+   Recomputed on resize and after each garment image loads.
+═══════════════════════════════════════════════════════════════ */
+let garmentSlideMaxPx = 0;
+
+function computeGarmentSlide() {
+  const vh = window.innerHeight, vw = window.innerWidth;
+  let totalW = 0;
+  if (EL.garmentStrip) {
+    Array.from(EL.garmentStrip.querySelectorAll('img')).forEach(img => {
+      if (img.naturalHeight > 0) totalW += (img.naturalWidth / img.naturalHeight) * vh;
+    });
+  }
+  // Fallback: assume portrait 2:3 ratio
+  if (totalW === 0) totalW = CONFIG.GARMENT_PANELS.length * (2 / 3) * vh;
+  // Slide distance: totalW guarantees all garments scroll through viewport
+  garmentSlideMaxPx = Math.max(totalW, vw * 1.2);
+}
+
+let panoramaMaxScrollX = 0;
+
+function computePanoramaHeight() {
+  const vh = window.innerHeight, vw = window.innerWidth;
+  let totalW = 0;
+  EL.panoramaStrip.querySelectorAll('img').forEach(img => {
+    const nw = img.naturalWidth || img.width;
+    const nh = img.naturalHeight || img.height;
+    if (nh > 0) totalW += (nw / nh) * vh;
+  });
+  if (totalW === 0) totalW = 10 * vh * 0.75;
+  panoramaMaxScrollX = Math.max(0, totalW - vw);
+  const { PANO_ENTER_SCALE: S, PANO_STRIP_SCALE: SS, PANO_EXIT_SCALE: ES } = CONFIG;
+  EL.page4.style.height =
+    (vh * S + panoramaMaxScrollX * SS + vh * ES + vh) + 'px';
+}
+
+(function initPanorama() {
+  const imgs = Array.from(EL.panoramaStrip.querySelectorAll('img'));
+  let done = 0;
+  const onDone = () => { if (++done >= imgs.length) computePanoramaHeight(); };
+  imgs.forEach(img => {
+    if (img.complete && img.naturalWidth > 0) onDone();
+    else {
+      img.addEventListener('load',  onDone);
+      img.addEventListener('error', onDone);
+    }
+  });
+  computePanoramaHeight();
+  [600, 2200].forEach(d => setTimeout(computePanoramaHeight, d));
+})();
+
+// Garment strip: compute slide distance after images load
+(function initGarmentSlide() {
+  if (!EL.garmentStrip) return;
+  const imgs = Array.from(EL.garmentStrip.querySelectorAll('img'));
+  let done = 0;
+  const onDone = () => { done++; computeGarmentSlide(); };
+  imgs.forEach(img => {
+    if (img.complete && img.naturalWidth > 0) onDone();
+    else {
+      img.addEventListener('load',  onDone);
+      img.addEventListener('error', onDone);
+    }
+  });
+  computeGarmentSlide();
+  [800, 2500].forEach(d => setTimeout(computeGarmentSlide, d));
+})();
+
+/* ═══════════════════════════════════════════════════════════════
+   ⑥ IMAGE PRELOADING — 67-asset parallel pipeline
+   ────────────────────────────────────────────────────────────
+   Stage 1 (immediate):  64 CK frames + 3 garment images
+                          instantiated as Image objects → parallel HTTP.
+   Stage 2 (onload):     img.decode() in batches of 8, RAF-yielded.
+   Stage 3 (gate):       Navigation to stop[3] blocked until all 67
+                          are decoded + 200ms GPU settle buffer.
+═══════════════════════════════════════════════════════════════ */
+const frameImgs = Array.from({ length: CONFIG.TOTAL_FRAMES }, (_, i) => {
+  const img    = new Image();
+  img.src      = `./assets/images/ckframe/ck_${i + 1}.png`;
+  img._decoded = false;
+  return img;
+});
+
+const garmentImgObjs = CONFIG.GARMENT_PANELS.map(info => {
+  const img    = new Image();
+  img.src      = info.src;
+  img._decoded = false;
+  img.addEventListener('load', computeGarmentSlide);
+  return img;
+});
+
+let framesReady     = false;
+let _navGatePending = false;
+let _navGateResolve = null;
+
+window.addEventListener('load', () => {
+  const BATCH_SIZE = 8, SETTLE_MS = 200;
+  let queue = [...frameImgs, ...garmentImgObjs];
+
+  function decodeBatch() {
+    const batch = queue.splice(0, BATCH_SIZE);
+    if (!batch.length) return;
+    Promise.allSettled(
+      batch.map(img =>
+        img.decode()
+          .then(() => { img._decoded = true; })
+          .catch(() => { img._decoded = true; })
+      )
+    ).then(() => {
+      if (queue.length > 0) {
+        requestAnimationFrame(decodeBatch);
+      } else {
+        setTimeout(() => {
+          framesReady = true;
+          if (_navGatePending && _navGateResolve) {
+            _navGatePending = false;
+            _navGateResolve();
+            _navGateResolve = null;
+          }
+        }, SETTLE_MS);
+      }
+    });
+  }
+  decodeBatch();
+});
+
+function waitForFramesReady() {
+  if (framesReady) return Promise.resolve();
+  return new Promise(resolve => {
+    _navGatePending = true;
+    _navGateResolve = resolve;
+  });
+}
+
+let curFrame = -1;
+function setFrame(idx) {
+  const c = clamp(Math.round(idx), 0, CONFIG.TOTAL_FRAMES - 1);
+  if (c !== curFrame) { curFrame = c; EL.ckFrame.src = frameImgs[c].src; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ⑦ RAF LOOPS — smooth lerped transforms for pano & seq
+   ────────────────────────────────────────────────────────────
+   Both loops use translate3d() for GPU compositor promotion.
+   Same PANO_LERP factor ensures motion consistency across pages.
+
+   Outro formula (identical for both loops — unified UX):
+     exitR ∈ [0, BR]     → panaY/seqY = +sin(t×π) × 120px  (elastic dip)
+     exitR ∈ [BR, 1]     → panaY/seqY = −vh × slideT^(1/EP) (decelerated slide-up)
+     where t = exitR/BR, slideT = (exitR−BR)/(1−BR)
+═══════════════════════════════════════════════════════════════ */
+let panoX = 0, panoTargX = 0;
+let panoY = window.innerHeight, panoTargY = window.innerHeight;
+
+(function rafPano() {
+  panoX = lerp(panoX, panoTargX, CONFIG.PANO_LERP);
+  panoY = lerp(panoY, panoTargY, CONFIG.PANO_LERP);
+  EL.panoramaStrip.style.transform  = `translate3d(${(-panoX).toFixed(2)}px, 0, 0)`;
+  EL.panoramaSticky.style.transform = `translate3d(0, ${panoY.toFixed(2)}px, 0)`;
+  requestAnimationFrame(rafPano);
+})();
+
+let seqY = 0, seqTargY = 0;
+
+(function rafSeq() {
+  seqY = lerp(seqY, seqTargY, CONFIG.PANO_LERP);
+  EL.seqSticky.style.transform = `translate3d(0, ${seqY.toFixed(2)}px, 0)`;
+  requestAnimationFrame(rafSeq);
+})();
+
+/* ═══════════════════════════════════════════════════════════════
+   ⑧ GLOBAL SCROLL HINT
+   ────────────────────────────────────────────────────────────
+   Appears only after navigation settles at an anchor stop.
+   Hidden the instant navigation begins (hideHint called in animateTo).
+
+   Stop → Variant:
+     stop[0]  hint-dark  (Page 1 hero, ivory bg)
+     stop[1]  hint-dark  (Page 2 resume, ivory bg)
+     stop[2]  hint-light (Page 3 panorama, image bg)   ← appears after pano intro
+     stop[3]  hint-dark  (Page 4 CLO showcase, ivory bg) ← appears after seq intro
+     stop >= 4  hidden   (Career Timeline — no further hint)
+═══════════════════════════════════════════════════════════════ */
+let hintTimeout = null;
+
+function showHint(stopIdx) {
+  clearTimeout(hintTimeout);
+  if (stopIdx >= 6) { hideHint(); return; }
+  // stop[3] = Pano anchor → bright (image background)
+  const isBright = (stopIdx === 3);
+  EL.gHint.classList.remove('hint-dark', 'hint-bright', 'hint-light');
+  EL.gHint.classList.add(isBright ? 'hint-bright' : 'hint-dark');
+  hintTimeout = setTimeout(() => {
+    if (!autoActive) EL.gHint.classList.add('visible');
+  }, 500);
+}
+
+function hideHint() {
+  clearTimeout(hintTimeout);
+  EL.gHint.classList.remove('visible');
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ⑨ NAVIGATION ENGINE
+   ────────────────────────────────────────────────────────────
+   5 stops, 4 transitions:
+     stop[0] = 0
+     stop[1] = P2.offsetTop + vh × P2_ENTER
+     stop[2] = P4.offsetTop + vh × S          ← pano anchor (hint-light)
+     stop[3] = P5.offsetTop + FI              ← seq anchor  (hint-dark)
+     stop[4] = P3.offsetTop + p3i × 0.25     ← timeline start
+
+   animateTo receives an optional easingFn (default: easeInOutQuart).
+   Transitions [2] and [3] use easeInCubic for gradual acceleration,
+   matching the "feel" described in the requirements (9s, 12s sequences).
+
+   One-action logic:
+     • One scroll down from stop[2] → animateTo(stop[2], stop[3], 9000, easeInCubic)
+       During this scroll: pano content plays + pano outro + seq fade-in
+     • One scroll down from stop[3] → animateTo(stop[3], stop[4], 12000, easeInCubic)
+       During this scroll: seq content (frames+slide) + seq outro + arrive at timeline
+═══════════════════════════════════════════════════════════════ */
+let autoRAF     = null;
+let autoActive  = false;
+let seqIndex    = 0;
+let touchStartY = 0, wheelAccum = 0, wheelTimer = null;
+let _remoteDelayTimer = null;  // 스크롤 네비게이션용 리모콘 색상 딜레이 타이머
+
+function cancelAuto() {
+  if (autoRAF !== null) { cancelAnimationFrame(autoRAF); autoRAF = null; }
+  autoActive = false;
+  window.navEngineActive  = false;
+  window.currentProgress  = 0;
+  window.currentTransIdx  = -1;
+  clearTimeout(_remoteDelayTimer);
+}
+
+function getStops() {
+  const vh  = window.innerHeight;
+  const FI  = vh * CONFIG.P5_FADE_IN * CONFIG.P5_SCALE;  // CLO intro scroll range
+  const p3i = EL.page3.offsetHeight - vh;                  // P3 (timeline) scrollable height
+  const S   = CONFIG.PANO_ENTER_SCALE;
+  return [
+    0,                                                          // stop[0] P1 Hero
+    EL.page2.offsetTop + vh * CONFIG.P2_ENTER,                 // stop[1] P2 Career
+    EL.page3.offsetTop + p3i * 0.860,                          // stop[2] P3 Timeline
+    EL.page4.offsetTop + vh * S,                               // stop[3] P4 Pano anchor
+    EL.page5.offsetTop + FI,                                   // stop[4] P5 CLO anchor
+    EL.page6.offsetTop,                                         // stop[5] P6 Showcase (page 시작점)
+    EL.page7.offsetTop,                                         // stop[6] P7 Contact (page 시작점)
+  ];
+}
+
+/**
+ * animateTo — scrolls from fromY to toY over `duration` ms using `easingFn`.
+ *
+ * @param {number}   fromY
+ * @param {number}   toY
+ * @param {number}   duration   ms
+ * @param {Function} onDone
+ * @param {Function} [easingFn=easeInOutQuart]
+ * @param {number}   [transIdx=-1]  0–3; stored in window.currentTransIdx
+ * @param {boolean}  [reversed=false]  true → currentProgress runs 1→0 (reverse)
+ */
+function animateTo(fromY, toY, duration, onDone, easingFn, transIdx, reversed) {
+  easingFn = easingFn || easeInOutQuart;
+  transIdx = (transIdx !== undefined) ? transIdx : -1;
+  reversed = reversed || false;
+  cancelAuto();
+  hideHint();
+  if (Math.abs(toY - fromY) < 2) {
+    window.currentProgress  = reversed ? 0 : 1;
+    window.currentReversed  = reversed;
+    window.navEngineActive  = false;
+    window.scrollTo(0, toY);
+    if (onDone) onDone();
+    return;
+  }
+  autoActive              = true;
+  window.navEngineActive  = true;
+  window.currentTransIdx  = transIdx;
+  window.currentReversed  = reversed;
+  window.currentProgress  = reversed ? 1 : 0;
+  const t0 = performance.now();
+  function step(now) {
+    const prog              = clamp((now - t0) / duration, 0, 1);
+    // When reversed: cp runs 1→0 so temporal animations see phases in reverse order
+    window.currentProgress  = reversed ? 1 - prog : prog;
+    window.currentReversed  = reversed;
+    const eased             = easingFn(prog);
+    window.scrollTo(0, fromY + (toY - fromY) * eased);
+    if (prog < 1) {
+      autoRAF = requestAnimationFrame(step);
+    } else {
+      window.currentProgress = reversed ? 0 : 1;
+      window.navEngineActive = false;
+      window.scrollTo(0, toY);
+      autoRAF    = null;
+      autoActive = false;
+      if (onDone) onDone();
+    }
+  }
+  autoRAF = requestAnimationFrame(step);
+}
+
+function resolveSeqIndex() {
+  const stops = getStops(), sy = window.scrollY;
+  for (let i = 0; i < stops.length - 1; i++) {
+    if (sy < stops[i + 1] - 4) { seqIndex = i; return; }
+  }
+  seqIndex = stops.length - 2;
+}
+
+function navigateForward() {
+  if (autoActive) return;
+  hideHint();
+  resolveSeqIndex();
+
+  const stops  = getStops();
+  const sy     = window.scrollY;
+  if (seqIndex >= stops.length - 1) return;
+
+  const target   = stops[seqIndex + 1];
+  const destIdx  = seqIndex + 1;
+
+  // ── Readiness gate: block nav to CLO anchor until all images decoded ──
+  // stop[4] = P5 CLO anchor
+  if (destIdx === 4 && !framesReady) {
+    autoActive = true;
+    waitForFramesReady().then(() => {
+      autoActive = false;
+      resolveSeqIndex();
+      const freshStops = getStops(), freshSy = window.scrollY;
+      if (seqIndex < freshStops.length - 1) {
+        const freshTarget  = freshStops[seqIndex + 1];
+        const dur          = CONFIG.SEQ_DUR[seqIndex];
+        const easingFn     = seqIndex === 1 ? easeLinear
+                           : seqIndex >= CONFIG.USE_EASEIN_FROM ? easeInCubic : easeInOutQuart;
+        animateTo(freshSy, freshTarget, dur, () => {
+          seqIndex = Math.min(seqIndex + 1, freshStops.length - 1);
+          showHint(seqIndex);
+        }, easingFn, seqIndex);
+        updateRemoteActiveDelayed(seqIndex + 1);  // ★ animateTo 이후 설정 (cancelAuto에 의해 클리어되지 않음)
+      }
+    });
+    return;
+  }
+
+  // ── Skip if already past target ──
+  if (target - sy < 4) {
+    const next = seqIndex + 1;
+    if (next < stops.length - 1) {
+      const nextTarget = stops[next + 1];
+      if (nextTarget - sy > 4) {
+        const dur = CONFIG.SEQ_DUR[next];
+        const ef  = next === 1 ? easeLinear
+                   : next >= CONFIG.USE_EASEIN_FROM ? easeInCubic : easeInOutQuart;
+        animateTo(sy, nextTarget, dur, () => {
+          seqIndex = Math.min(next + 1, stops.length - 1);
+          showHint(seqIndex);
+        }, ef, next);
+        updateRemoteActiveDelayed(next + 1);  // ★ animateTo 이후 설정
+      }
+    }
+    return;
+  }
+
+  // ── Normal forward navigation ──
+  const dur = CONFIG.SEQ_DUR[seqIndex];
+  // 수정1: Trans[1]=easeLinear 등속 | 수정6: 역방향도 동일 easing 사용
+  const ef  = seqIndex === 1 ? easeLinear
+             : seqIndex >= CONFIG.USE_EASEIN_FROM ? easeInCubic : easeInOutQuart;
+  animateTo(sy, target, dur, () => {
+    seqIndex = Math.min(seqIndex + 1, stops.length - 1);
+    // Trans-2(Highlight→Design) 완료 시 lerp 잔류값 강제 스냅
+    if (seqIndex === 3) { panoTargY = 0; panoY = 0; panoTargX = 0; panoX = 0; }
+    showHint(seqIndex);
+  }, ef, seqIndex);
+  // ★ animateTo 이후 설정: cancelAuto()가 이미 실행된 후이므로 타이머가 클리어되지 않음
+  updateRemoteActiveDelayed(seqIndex + 1);
+  // [수정2 검증] Trans[2] (Highlight→Design) 종료 시 stop[3] = page4.offsetTop + vh*PANO_ENTER_SCALE
+  // animateTo 내부 마지막에 window.scrollTo(0, toY) 실행 → 항상 toY에 정렬됨 ✓
+}
+
+function navigateBack() {
+  if (autoActive) return;
+  hideHint();
+  resolveSeqIndex();
+
+  const stops = getStops();
+  const sy    = window.scrollY;
+  const atStop = (Math.abs(sy - stops[seqIndex]) < 4);
+
+  // Determine destination stop index
+  let destIdx;
+  if (atStop) {
+    if (seqIndex <= 0) return;
+    destIdx = seqIndex - 1;
+  } else {
+    destIdx = seqIndex;   // not at stop → snap back to current stop first
+  }
+
+  const fromStop = stops[destIdx + 1];  // the anchor we depart from
+  const dest     = stops[destIdx];
+  const dur      = CONFIG.SEQ_DUR_BACK[destIdx];
+
+  /* ── EXACT REVERSE EASING ─────────────────────────────────────
+     Forward trans[destIdx] used easeInCubic (slow→fast) for positions.
+     Time-reverse requires easeOutCubic (fast→slow) so the scroll
+     position curve is the precise mirror: pos(t)_fwd = pos(1-t)_rev.
+     easeInOutQuart is symmetric → same function for both directions.
+  ────────────────────────────────────────────────────────────── */
+  // 수정6: 역방향도 정방향과 동일 easing (3배 빠름은 SEQ_DUR_BACK으로 처리)
+  const ef = destIdx === 1 ? easeLinear
+           : destIdx >= CONFIG.USE_EASEIN_FROM ? easeInCubic : easeInOutQuart;
+
+  // Teleport to fromStop so temporal animation starts at the correct scroll anchor.
+  // (Should already be there after forward nav settled; teleport handles interrupts.)
+  if (Math.abs(sy - fromStop) > 50) {
+    window.scrollTo(0, fromStop);
+  }
+
+  // reversed=true → currentProgress runs 1→0 → all temporal phases play in reverse
+  animateTo(fromStop, dest, dur, () => {
+    seqIndex = destIdx;
+    showHint(destIdx);
+  }, ef, destIdx, true);
+  // ★ animateTo 이후 설정
+  updateRemoteActiveDelayed(destIdx);
+}
+
+/* ─── Input handlers ─────────────────────────────────────────── */
+window.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  if (autoActive) return;
+  wheelAccum += e.deltaY;
+  clearTimeout(wheelTimer);
+  wheelTimer = setTimeout(() => {
+    if (Math.abs(wheelAccum) >= CONFIG.WHEEL_THRESH) {
+      hideHint();
+      wheelAccum > 0 ? navigateForward() : navigateBack();
+    }
+    wheelAccum = 0;
+  }, CONFIG.WHEEL_DEBOUNCE);
+}, { passive: false });
+
+window.addEventListener('touchstart', (e) => {
+  touchStartY = e.touches[0].clientY;
+}, { passive: true });
+
+window.addEventListener('touchend', (e) => {
+  if (autoActive) return;
+  const diff = touchStartY - e.changedTouches[0].clientY;
+  if (Math.abs(diff) > 45) {
+    hideHint();
+    diff > 0 ? navigateForward() : navigateBack();
+  }
+}, { passive: true });
+
+window.addEventListener('keydown', (e) => {
+  if (['ArrowDown', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); navigateForward(); }
+  if (['ArrowUp',  'PageUp'       ].includes(e.key)) { e.preventDefault(); navigateBack();    }
+});
+
+/* ═══════════════════════════════════════════════════════════════
+   ⑩ SCROLL ANIMATION HANDLER
+   ────────────────────────────────────────────────────────────
+   Driven by window.scrollY (spatial) AND window.currentProgress (temporal).
+   All transforms: translate3d() for GPU compositor promotion.
+   No DOM queries inside this function (uses EL cache exclusively).
+
+   ── PAGE 3 PANORAMA: Intro → Content → Dead Zone → Outro ──────
+     Intro:    enterR [0→1]  — panoTargY slides vh → 0 (easeOutExpo decel)
+     Content:  stripR [0→1]  — panoTargX spans maxScrollX (LINEAR, no secondary easing)
+                               Engine easeInCubic is the sole acceleration source.
+     Dead Zone:               scrollY advances; panoTargX frozen at maxX; lerp drains.
+     Outro:    exitR  [0→1]  — Unified JS outro:
+                   Phase A [0 → BOUNCE_RANGE]: sin dip (+120px)
+                   Phase B [BOUNCE_RANGE → 1]: decelerated slide-up (−vh × t^(1/EP))
+
+     When transition 2 is active (navEngineActive && currentTransIdx===2):
+       All three phases are remapped onto window.currentProgress [0,1] using
+       T_CONTENT_END / T_DEAD_END thresholds, fully decoupled from scrollY velocity.
+     Fallback (manual scroll / back-nav): uses raw scrollY mapping as before.
+
+   ── PAGE 4 CLO SHOWCASE: Intro → Content → Dead Zone → Outro ──
+     Intro:    mEnter [0→1]  — seqSticky opacity 0→1  (spatial, scroll-based)
+     Content:                — frames 0→63 LINEAR on currentProgress [0, T_CONTENT_END]
+                               translateX LINEAR on currentProgress (no secondary easing)
+     Dead Zone:               currentProgress [T_CONTENT_END, T_DEAD_END] — frozen
+     Outro:    p5ExitR [0→1] — IDENTICAL bounce+slide formula as panorama outro,
+                               mapped onto currentProgress [T_DEAD_END, 1.0]
+     FadeOut:  mExit [0→1]   — seqSticky opacity 1→0 (spatial, scroll-based)
+═══════════════════════════════════════════════════════════════ */
+function onScroll() {
+  const sy = window.scrollY;
+  const vh = window.innerHeight;
+  const vw = window.innerWidth;
+
+  /* ── P1: Hero colour morph + fade ────────────────────────── */
+  const p1p = mapRange(sy, EL.page1.offsetTop, EL.page1.offsetTop + vh * 0.85, 0, 1);
+  EL.heroLogo.style.opacity = 1 - p1p;
+  EL.heroLogo.style.filter  = `blur(${(p1p * 18).toFixed(2)}px)`;
+  EL.heroName.style.color   = lerpColor('#1A1A1A', '#EB3300', p1p);
+  EL.scrollHint.style.opacity = mapRange(sy, 0, 80, 1, 0);
+
+  /* ── P2: Interlocking columns ─────────────────────────────── */
+  const p2s   = sy - EL.page2.offsetTop;
+  const ENTER = vh * CONFIG.P2_ENTER;
+  const LOCK  = vh * CONFIG.P2_LOCK;
+  const EXIT  = vh * CONFIG.P2_EXIT;
+  const ep    = mapRange(p2s, 0,           ENTER,               0, 1);
+  const xp    = mapRange(p2s, ENTER + LOCK, ENTER + LOCK + EXIT, 0, 1);
+  const epE   = easeInOutCubic(ep);
+  const xpE   = easeInOutCubic(xp);
+  const p2op  = Math.min(ep, 1 - xp);
+  EL.colLeft.style.transform  = `translate3d(0, ${((1-epE)*-180 + xpE*180).toFixed(2)}px, 0)`;
+  EL.colLeft.style.opacity    = p2op;
+  EL.colRight.style.transform = `translate3d(0, ${((1-epE)*180 - xpE*180).toFixed(2)}px, 0)`;
+  EL.colRight.style.opacity   = p2op;
+
+  /* ── P4 (HTML: page4): Panoramic slide ───────────────────── */
+  const { PANO_ENTER_SCALE: S, PANO_STRIP_SCALE: SS, PANO_EXIT_SCALE: ES } = CONFIG;
+  const p4s  = sy - EL.page4.offsetTop;
+  const maxX = panoramaMaxScrollX;
+
+  const activeTransIdx  = window.navEngineActive ? window.currentTransIdx : -1;
+  const cp              = window.currentProgress;
+
+  if (activeTransIdx === 2) {
+    // ── Trans-2 tail: Pano enters immediately (T1_PANO_START = 0) ──
+    if (cp < T1_PANO_START) {
+      panoTargY = vh;
+    } else {
+      const panoT = (cp - T1_PANO_START) / (1 - T1_PANO_START);
+      panoTargY = vh * (1 - easeInOutQuart(panoT));  // scrollY easing과 동기화 → lerp lag 제거
+    }
+    panoTargX = 0;
+    EL.panoramaProgress.style.width = '0%';
+
+  } else if (activeTransIdx === 3) {
+    // ── Trans-3: Pano content → outro → CLO intro ──
+    const enterR = mapRange(p4s, 0, vh * S, 0, 1);
+    if (enterR < 1) {
+      panoTargY = vh * (1 - easeInConstrained(enterR));  // 수정2: 속도비≤2배
+      panoTargX = 0;
+
+    } else if (cp <= T3_CONTENT_END) {
+      const contentT = clamp(cp / T3_CONTENT_END, 0, 1);
+      panoTargX = easeInCubic(contentT) * maxX;
+      EL.panoramaProgress.style.width = (easeInCubic(contentT) * 100).toFixed(2) + '%';
+      panoTargY = 0;
+
+    } else if (cp <= T3_DEAD_END) {
+      panoTargX = maxX;
+      panoTargY = 0;
+      EL.panoramaProgress.style.width = '100%';
+
+    } else if (cp <= T3_OUTRO_END) {
+      const outroT = clamp((cp - T3_DEAD_END) / (T3_OUTRO_END - T3_DEAD_END), 0, 1);
+      panoTargX = maxX;
+      EL.panoramaProgress.style.width = '100%';
+      if (outroT < OUTRO_BOUNCE_FRAC) {
+        const t = outroT / OUTRO_BOUNCE_FRAC;
+        panoTargY = BOUNCE_PX * easeOutCubic(t);
+      } else {
+        const t = (outroT - OUTRO_BOUNCE_FRAC) / (1 - OUTRO_BOUNCE_FRAC);
+        panoTargY = BOUNCE_PX + (-vh - BOUNCE_PX) * easeInCubic(t);
+      }
+
+    } else {
+      // CLO intro: last 0.6 s of trans-3
+      const introT = clamp((cp - T3_OUTRO_END) / (1 - T3_OUTRO_END), 0, 1);
+      EL.seqSticky.style.opacity = introT.toFixed(4);
+      panoTargX = maxX;
+      panoTargY = -vh;
+      EL.panoramaProgress.style.width = '100%';
+    }
+
+  } else {
+    // ── SPATIAL FALLBACK (manual scroll / back-nav) ──
+    const enterR = mapRange(p4s, 0,             vh * S,                  0, 1);
+    const stripR = mapRange(p4s, vh * S,         vh * S + maxX * SS,     0, 1);
+    const exitR  = mapRange(p4s, vh*S + maxX*SS, vh*S + maxX*SS + vh*ES, 0, 1);
+
+    if (enterR < 1) {
+      panoTargY = vh * (1 - easeInConstrained(enterR));  // 수정2: 속도비≤2배
+    } else if (exitR > 0) {
+      if (exitR < OUTRO_BOUNCE_FRAC) {
+        const t = exitR / OUTRO_BOUNCE_FRAC;
+        panoTargY = BOUNCE_PX * easeOutCubic(t);
+      } else {
+        const t = (exitR - OUTRO_BOUNCE_FRAC) / (1 - OUTRO_BOUNCE_FRAC);
+        panoTargY = BOUNCE_PX + (-vh - BOUNCE_PX) * easeInCubic(t);
+      }
+    } else {
+      panoTargY = 0;
+    }
+    panoTargX = easeInCubic(clamp(stripR, 0, 1)) * maxX;
+    EL.panoramaProgress.style.width = (easeInCubic(clamp(stripR, 0, 1)) * 100).toFixed(2) + '%';
+  }
+
+  /* ── P5 (HTML: page5): CLO Visual Showcase ───────────────── */
+  const p5s = sy - EL.page5.offsetTop;
+  const FI  = vh * CONFIG.P5_FADE_IN  * CONFIG.P5_SCALE;
+  const PC  = vh * CONFIG.P5_CONTENT  * CONFIG.P5_SCALE;
+  const PE  = vh * CONFIG.P5_EXIT;
+  const FO  = vh * CONFIG.P5_FADE_OUT * CONFIG.P5_SCALE;
+
+  const mEnter = mapRange(p5s, 0,        FI,          0, 1);
+  const mExit  = mapRange(p5s, FI+PC+PE, FI+PC+PE+FO, 0, 1);
+
+  // During trans-3 CLO intro phase, seqSticky opacity managed by P4 block above.
+  const isTrans3Intro = (activeTransIdx === 3 && cp > T3_OUTRO_END);
+
+  if (mEnter >= 1 || isTrans3Intro) {
+    const useSeqTemporal = (activeTransIdx === 4);
+
+    if (useSeqTemporal) {
+      // ── TIME-BASED PATH (trans-3) ─────────────────────────────
+      EL.seqSticky.style.opacity = '1';
+
+      if (cp <= T4_CONTENT_END) {
+        // ── Content ──────────────────────────────────────────
+        const contentT = clamp(cp / T4_CONTENT_END, 0, 1);
+
+        // Frames: loop continuously until CLO panel slides off-screen.
+        // frameT can exceed 1.0 (multiple loops): Math.floor(…) % TOTAL_FRAMES
+        // T4_FRAME_END = 3/9 → one loop per 3 s of content time (3 loops total in 9 s)
+        const frameT   = contentT / T4_FRAME_END;   // 0 → ~3 (looping)
+        const frameIdx = Math.floor(frameT * CONFIG.TOTAL_FRAMES) % CONFIG.TOTAL_FRAMES;
+        setFrame(clamp(frameIdx, 0, CONFIG.TOTAL_FRAMES - 1));
+
+        // Slide: time-based easeInCubic over garmentSlideMaxPx (dynamic distance)
+        const slideX = -easeInCubic(contentT) * garmentSlideMaxPx;
+        EL.seqTrain.style.transform   = `translate3d(${slideX.toFixed(2)}px, 0, 0)`;
+        EL.seqProgressBar.style.width = (easeInCubic(contentT) * 100).toFixed(2) + '%';
+        seqTargY = 0;
+
+      } else if (cp <= T4_DEAD_END) {
+        // ── Dead zone: freeze at content-end state ────────────
+        setFrame(CONFIG.TOTAL_FRAMES - 1);
+        EL.seqTrain.style.transform   = `translate3d(${(-garmentSlideMaxPx).toFixed(2)}px, 0, 0)`;
+        EL.seqProgressBar.style.width = '100%';
+        seqTargY = 0;
+
+      } else if (cp <= T4_OUTRO_END) {
+        // ── Outro 2-phase bounce+exit ──────────────────────────
+        const outroT = clamp((cp - T4_DEAD_END) / (T4_OUTRO_END - T4_DEAD_END), 0, 1);
+        setFrame(CONFIG.TOTAL_FRAMES - 1);
+        EL.seqTrain.style.transform   = `translate3d(${(-garmentSlideMaxPx).toFixed(2)}px, 0, 0)`;
+        EL.seqProgressBar.style.width = '100%';
+
+        if (outroT < OUTRO_BOUNCE_FRAC) {
+          // Phase A: easeOutCubic 0 → +BOUNCE_PX (decelerating bounce down)
+          const t = outroT / OUTRO_BOUNCE_FRAC;
+          seqTargY = BOUNCE_PX * easeOutCubic(t);
+        } else {
+          // Phase B: easeInCubic +BOUNCE_PX → −vh (accelerating slide-up exit)
+          const t = (outroT - OUTRO_BOUNCE_FRAC) / (1 - OUTRO_BOUNCE_FRAC);
+          seqTargY = BOUNCE_PX + (-vh - BOUNCE_PX) * easeInCubic(t);
+        }
+
+      } else {
+        // ── 5P region [T4_OUTRO_END, 1.0]: sticky off-screen, 5P timeline spatial ──
+        setFrame(CONFIG.TOTAL_FRAMES - 1);
+        EL.seqTrain.style.transform   = `translate3d(${(-garmentSlideMaxPx).toFixed(2)}px, 0, 0)`;
+        seqTargY = -vh;   // hold fully off-screen; lerp will maintain
+      }
+
+    } else {
+      // ── SPATIAL FALLBACK PATH (manual scroll / back-nav) ────
+      EL.seqSticky.style.opacity = Math.min(mEnter, 1 - mExit).toString();
+
+      const progCont = mapRange(p5s, FI, FI + PC, 0, 1);
+      // Frames: loop continuously (same as temporal path)
+      const frameLoopT = progCont / T4_FRAME_END;  // can exceed 1.0
+      const frameIdx   = Math.floor(frameLoopT * CONFIG.TOTAL_FRAMES) % CONFIG.TOTAL_FRAMES;
+      setFrame(clamp(frameIdx, 0, CONFIG.TOTAL_FRAMES - 1));
+      // Slide: easeInCubic over dynamic garment strip distance
+      const slideX = -easeInCubic(clamp(progCont, 0, 1)) * garmentSlideMaxPx;
+      EL.seqTrain.style.transform   = `translate3d(${slideX.toFixed(2)}px, 0, 0)`;
+      EL.seqProgressBar.style.width = (easeInCubic(clamp(progCont, 0, 1)) * 100).toFixed(2) + '%';
+
+      // Outro via scroll-based exitR — same 2-phase formula
+      const p5ExitR = mapRange(p5s, FI + PC, FI + PC + PE, 0, 1);
+      if (p5ExitR > 0) {
+        if (p5ExitR < OUTRO_BOUNCE_FRAC) {
+          const t = p5ExitR / OUTRO_BOUNCE_FRAC;
+          seqTargY = BOUNCE_PX * easeOutCubic(t);
+        } else {
+          const t = (p5ExitR - OUTRO_BOUNCE_FRAC) / (1 - OUTRO_BOUNCE_FRAC);
+          seqTargY = BOUNCE_PX + (-vh - BOUNCE_PX) * easeInCubic(t);
+        }
+      } else {
+        seqTargY = 0;
+      }
+    }
+
+  } else {
+    // Before intro: reset
+    EL.seqSticky.style.opacity = mEnter.toString();
+    setFrame(0);
+    EL.seqTrain.style.transform   = 'translate3d(0, 0, 0)';
+    EL.seqProgressBar.style.width = '0%';
+    seqTargY = 0;
+  }
+
+  // Hard reset when far above page5
+  if (sy < EL.page5.offsetTop - vh * 0.5) {
+    seqTargY = 0;
+  }
+
+  /* ── P3 (HTML: page3): Career Timeline ───────────────────── */
+  const p3i = EL.page3.offsetHeight - vh;
+  const p3s = sy - EL.page3.offsetTop;
+
+  EL.timelineLine.style.width =
+    mapRange(p3s, 0, p3i * 0.2512, 0, 100).toFixed(2) + '%';
+
+  for (let i = 0; i < 4; i++) {
+    const ns = 0.2512 + i * 0.1062, ne = ns + 0.1738;
+    const np = mapRange(p3s, p3i * ns,           p3i * ne,            0, 1);
+    const cp = mapRange(p3s, p3i * (ns + 0.0773), p3i * (ne + 0.1159), 0, 1);
+    const fo = mapRange(p3s, p3i * CONFIG.P3_FADE_START, p3i * CONFIG.P3_FADE_END, 0, 1);
+    const fw = 1 - fo;
+
+    const tP = mapRange(np, 0, 0.30, 0, 1);
+    const tO = Math.min(tP, mapRange(np, 0.50, 0.70, 1, 0));
+    EL.ticksH[i].style.opacity   = tO * fw;
+    EL.ticksH[i].style.transform = `translate(-50%,-50%) scaleX(${tP})`;
+    EL.ticksV[i].style.opacity   = tO * fw;
+    EL.ticksV[i].style.transform = `translate(-50%,-50%) scaleY(${tP})`;
+
+    const rAP = mapRange(np, 0.10, 0.65, 0, 1);
+    EL.ringsA[i].style.opacity   = Math.max(0, 1 - rAP * 1.4) * fw;
+    EL.ringsA[i].style.transform = `translate(-50%,-50%) scale(${1 + rAP * 2.5})`;
+
+    const rBP = mapRange(np, 0.65, 1.0, 0, 1);
+    const rBE = 1 - Math.pow(1 - rBP, 3);
+    const rBO = Math.max(0, rBP < 0.5 ? rBP * 2 : 2 - rBP * 2);
+    EL.ringsB[i].style.opacity   = rBO * 0.55 * fw;
+    EL.ringsB[i].style.transform = `translate(-50%,-50%) scale(${1 + rBE * 1.5})`;
+
+    const dP = mapRange(np, 0.45, 1.0, 0, 1);
+    const dS = Math.max(0, dP < 0.6
+      ? (dP / 0.6) * 1.18
+      : 1.18 - ((dP - 0.6) / 0.4) * 0.18);
+    EL.nodes[i].style.opacity   = np * fw;
+    EL.nodes[i].style.transform = `scale(${dS.toFixed(4)}) translateY(-50%)`;
+    EL.nodes[i].style.filter    = `blur(${((np < 0.6 ? (1 - dP / 0.6) * 1.5 : 0) + fo * 8).toFixed(2)}px)`;
+
+    EL.contents[i].style.opacity   = cp * fw;
+    EL.contents[i].style.transform = `translateY(${((1 - cp) * 18).toFixed(2)}px)`;
+    EL.contents[i].style.filter    = `blur(${(fo * 8).toFixed(2)}px)`;
+  }
+
+  const ep3 = mapRange(p3s, p3i * 0.903, p3i * 0.99, 0, 1);
+  EL.timelineLine.style.transformOrigin = ep3 > 0 ? 'right' : 'left';
+  EL.timelineLine.style.transform =
+    ep3 > 0 ? `scaleX(${(1 - ep3).toFixed(4)})` : 'scaleX(1)';
+  EL.timelineLine.style.filter = `blur(${(ep3 * 4).toFixed(2)}px)`;
+
+  /* ── P6: Interactive Showcase — fade in/out (수정4) ─────── */
+  if (EL.showcaseSticky) {
+    if (activeTransIdx === 5) {
+      // Trans[5] Showcase→Contact: showcase fade-out
+      EL.showcaseSticky.style.opacity = clamp(1 - cp * 2, 0, 1).toFixed(4);
+    } else {
+      // stop[5]에 도달하면 즉시 visible (fade in은 Trans[4] 종료 후 자연스럽게)
+      const p6top = EL.page6.offsetTop;
+      EL.showcaseSticky.style.opacity = (sy >= p6top - 4) ? '1' : '0';
+    }
+    EL.showcaseSticky.style.transform = 'none';
+  }
+
+  /* ── P7: Contact — fade-in (수정4: scroll-up 없이 순수 fade) ── */
+  if (EL.page7) {
+    const contactWrap = document.getElementById('contactWrap');
+    if (contactWrap) {
+      if (activeTransIdx === 5) {
+        // Trans[5] Showcase→Contact: contact fade-in (cp 0.4 이후부터 등장)
+        const cFade = clamp((cp - 0.40) / 0.60, 0, 1);
+        contactWrap.style.opacity = cFade.toFixed(4);
+        contactWrap.style.transform = 'translateY(-50%)';
+        if (cFade > 0) contactWrap.classList.add('visible');
+      } else {
+        contactWrap.style.opacity = '';
+        contactWrap.style.transform = '';
+        const p7top = EL.page7.offsetTop;
+        if (sy + vh * 0.5 >= p7top) {
+          contactWrap.classList.add('visible');
+        } else {
+          contactWrap.classList.remove('visible');
+        }
+      }
+    }
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ⑪ INTERACTIVE SHOWCASE ENGINE (v15/v19 — hover-activated)
+═══════════════════════════════════════════════════════════════ */
+(function initShowcase() {
+  const viewport    = document.getElementById('showcaseViewport');
+  const placeholder = document.getElementById('showcasePlaceholder');
+  const catLabel    = document.getElementById('showcaseCatLabel');
+  const progressBar = document.getElementById('showcaseProgress');
+  const menuItems   = document.querySelectorAll('.sc-item');
+
+  if (!viewport) return;
+
+  const SOURCES = {
+    mi:     Array.from({length: 10}, (_, i) => `./assets/images/mi/${i+1}.jpg`),
+    clo:    Array.from({length: 10}, (_, i) => `./assets/images/clo/${i+1}.jpg`),
+    tp:     Array.from({length: 10}, (_, i) => `./assets/images/tp/${i+1}.jpg`),
+    sample: Array.from({length: 10}, (_, i) => `./assets/images/sample/sample_${i+1}.png`),
+  };
+
+  const LABELS = {
+    mi:     'Market Intelligence',
+    clo:    'CLO · 3D Visualization',
+    tp:     'Tech Pack',
+    sample: 'Physical Sample',
+  };
+
+  let activeKey    = null;
+  let activePanel  = null;
+  let floatRAF     = null;
+  let exitTimer    = null;
+
+  function shuffle(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  function exitPanel(panel, onDone) {
+    if (!panel) { if (onDone) onDone(); return; }
+    panel.style.transition = 'transform 1.2s cubic-bezier(0.55, 0, 1, 0.45)';
+    panel.style.transform  = 'translateX(100%)';
+    clearTimeout(exitTimer);
+    exitTimer = setTimeout(() => {
+      if (panel.parentNode) panel.parentNode.removeChild(panel);
+      if (onDone) onDone();
+    }, 1250);
+  }
+
+  function buildMarqueePanel(key) {
+    const panel = document.createElement('div');
+    panel.className = 'showcase-panel';
+
+    const track = document.createElement('div');
+    track.className = 'marquee-track';
+
+    const strip = document.createElement('div');
+    strip.className = 'marquee-strip';
+    strip.id = 'marqueeStrip_' + key;
+
+    const srcs = shuffle(SOURCES[key]);
+    const doubled = [...srcs, ...srcs];
+    doubled.forEach(src => {
+      const img = document.createElement('img');
+      img.src = src; img.alt = ''; img.draggable = false;
+      strip.appendChild(img);
+    });
+
+    track.appendChild(strip);
+    panel.appendChild(track);
+    viewport.appendChild(panel);
+
+    panel.style.transform = 'translateX(100%)';
+    requestAnimationFrame(() => {
+      panel.style.transition = 'transform 1.2s cubic-bezier(0.16, 1, 0.3, 1)';
+      panel.style.transform  = 'translateX(0)';
+    });
+
+    setTimeout(() => {
+      const singleW = strip.scrollWidth / 2;
+      const speed   = 80;
+      const dur     = singleW / speed;
+      strip.style.animation = `marqueeScroll ${dur.toFixed(1)}s linear infinite`;
+    }, 1250);
+
+    return panel;
+  }
+
+  function buildSamplePanel(key) {
+    const panel = document.createElement('div');
+    panel.className = 'showcase-panel';
+
+    const track = document.createElement('div');
+    track.className = 'samples-track';
+
+    const srcs = shuffle(SOURCES[key]);
+    const items = [];
+
+    srcs.forEach((src, i) => {
+      const item = document.createElement('div');
+      item.className = 'sample-item';
+      const img = document.createElement('img');
+      img.src = src; img.alt = ''; img.draggable = false;
+      // height set by CSS to 50vh; after load, apply 1/6-width left overlap margin
+      img.addEventListener('load', function() {
+        const renderedH = window.innerHeight * 0.5;
+        const renderedW = img.naturalWidth > 0
+          ? (img.naturalWidth / img.naturalHeight) * renderedH
+          : renderedH;
+        const overlap = renderedW / 6;
+        if (i > 0) item.style.marginLeft = `-${overlap.toFixed(2)}px`;
+      });
+      item.appendChild(img);
+      track.appendChild(item);
+      items.push({
+        el: item,
+        phase: Math.random() * Math.PI * 2,
+        speed: 0.6 + Math.random() * 0.8,
+        amp:   9 + Math.random() * 11,
+        baseY: (Math.random() - 0.5) * 80,
+      });
+    });
+
+    panel.appendChild(track);
+    viewport.appendChild(panel);
+
+    panel.style.transform = 'translateX(100%)';
+    requestAnimationFrame(() => {
+      panel.style.transition = 'transform 1.2s cubic-bezier(0.16, 1, 0.3, 1)';
+      panel.style.transform  = 'translateX(0)';
+    });
+
+    let t0 = null;
+    function floatLoop(ts) {
+      if (!t0) t0 = ts;
+      const elapsed = (ts - t0) / 1000;
+      items.forEach(it => {
+        const y = it.baseY + Math.sin(elapsed * it.speed + it.phase) * it.amp;
+        it.el.style.transform = `translateY(${y.toFixed(2)}px)`;
+      });
+      floatRAF = requestAnimationFrame(floatLoop);
+    }
+    floatRAF = requestAnimationFrame(floatLoop);
+    return panel;
+  }
+
+  function activate(key) {
+    if (key === activeKey) return;
+    if (floatRAF) { cancelAnimationFrame(floatRAF); floatRAF = null; }
+
+    const prevPanel = activePanel;
+    activePanel = null;
+    exitPanel(prevPanel);
+
+    activeKey = key;
+
+    menuItems.forEach(li => {
+      li.classList.toggle('is-active', li.dataset.key === key);
+    });
+
+    catLabel.textContent = LABELS[key] || '';
+    catLabel.classList.add('visible');
+    progressBar.style.width = '100%';
+    placeholder.classList.add('hidden');
+
+    if (key === 'sample') {
+      activePanel = buildSamplePanel(key);
+    } else {
+      activePanel = buildMarqueePanel(key);
+    }
+  }
+
+  function deactivate() {
+    if (!activeKey) return;
+    if (floatRAF) { cancelAnimationFrame(floatRAF); floatRAF = null; }
+
+    menuItems.forEach(li => li.classList.remove('is-active'));
+    catLabel.classList.remove('visible');
+    progressBar.style.width = '0%';
+
+    const prevPanel = activePanel;
+    activePanel = null;
+    activeKey   = null;
+
+    exitPanel(prevPanel, () => {
+      placeholder.classList.remove('hidden');
+    });
+  }
+
+  menuItems.forEach(li => {
+    li.addEventListener('mouseenter', () => activate(li.dataset.key));
+  });
+
+  const menuEl = document.querySelector('.showcase-left');
+  if (menuEl) {
+    menuEl.addEventListener('mouseleave', deactivate);
+  }
+})();
+
+/* ═══════════════════════════════════════════════════════════════
+   ⑫ NAVIGATION REMOTE CONTROL
+   ─────────────────────────────────────────────────────────────
+   Clicking a remote button triggers a 2.4s page-level crossfade:
+     0.0–1.2s  current viewport fades out  (overlay fades IN to ivory)
+     1.2–2.4s  target page fades in        (overlay fades OUT from ivory)
+   During crossfade, scrollY is instantly set to the target stop.
+═══════════════════════════════════════════════════════════════ */
+const NAV_FADE_MS = 1200;  // ms per half (fade-out or fade-in)
+let navFading = false;
+
+function updateRemoteActive(stopIdx) {
+  if (!EL.navRemote) return;
+  EL.navRemote.querySelectorAll('.nav-btn').forEach((btn) => {
+    const s = parseInt(btn.dataset.stop, 10);
+    btn.classList.toggle('active', s === stopIdx);
+  });
+}
+
+// 스크롤 액션(wheel/key/touch) 시 1.5초 딜레이 후 리모콘 색상 변경
+function updateRemoteActiveDelayed(stopIdx) {
+  clearTimeout(_remoteDelayTimer);
+  _remoteDelayTimer = setTimeout(() => updateRemoteActive(stopIdx), 1500);
+}
+
+function remoteNavigateTo(stopIdx) {
+  if (navFading || autoActive) return;
+  navFading = true;
+
+  // ★ Intro-Start: 버튼 클릭 즉시 해당 인덱스 활성화
+  updateRemoteActive(stopIdx);
+
+  // Freeze scroll engine
+  cancelAuto();
+  hideHint();
+
+  const overlay = EL.navFadeOverlay;
+  if (!overlay) { finishRemoteNav(stopIdx); return; }
+
+  // Phase 1: fade OUT (overlay fades IN, 1.2s)
+  overlay.classList.add('fading');
+  overlay.style.transition = `opacity ${NAV_FADE_MS}ms ease`;
+  overlay.style.opacity    = '1';
+
+  setTimeout(() => {
+    // Mid-point: instantly jump scroll to target
+    const stops  = getStops();
+    const target = stops[clamp(stopIdx, 0, stops.length - 1)];
+    window.scrollTo(0, target);
+    seqIndex = stopIdx;
+    onScroll();   // update all animations at new position
+
+    // Phase 2: fade IN (overlay fades OUT, 1.2s)
+    overlay.style.transition = `opacity ${NAV_FADE_MS}ms ease`;
+    overlay.style.opacity    = '0';
+
+    setTimeout(() => {
+      overlay.classList.remove('fading');
+      overlay.style.transition = 'none';
+      navFading = false;
+      updateRemoteActive(stopIdx);
+      showHint(stopIdx);
+    }, NAV_FADE_MS);
+
+  }, NAV_FADE_MS);
+}
+
+// Bind remote buttons
+if (EL.navRemote) {
+  EL.navRemote.addEventListener('click', (e) => {
+    const btn = e.target.closest('.nav-btn');
+    if (!btn) return;
+    const stopIdx = parseInt(btn.dataset.stop, 10);
+    remoteNavigateTo(stopIdx);
+  });
+}
+
+// Track active remote button on scroll settle
+// autoActive 중에는 navigateForward/Back에서 이미 설정했으므로 덮어쓰지 않음
+function updateRemoteOnScroll() {
+  if (navFading || autoActive) return;
+  const stops = getStops();
+  const sy    = window.scrollY;
+  let active  = 0;
+  for (let i = stops.length - 1; i >= 0; i--) {
+    if (sy >= stops[i] - 4) { active = i; break; }
+  }
+  updateRemoteActive(active);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ⑬ INIT
+═══════════════════════════════════════════════════════════════ */
+window.addEventListener('scroll', onScroll, { passive: true });
+window.addEventListener('scroll', updateRemoteOnScroll, { passive: true });
+window.addEventListener('resize', () => {
+  computePanoramaHeigght();
+  computeSeqHeight();
+  computeGarmentSlide();
+  onScroll();
+});
+
+onScroll();
+computeGarmentSlide();
+updateRemoteActive(0);
+// Show initial scroll hint on Page 1 after brief settle
+setTimeout(() => showHint(0), 1200);
+</script>
+</body>
+</html>
